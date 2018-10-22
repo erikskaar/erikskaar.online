@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="index.css"><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+  <title>Fjord1 Svelecrew</title>
+</head>
+<body>
+  <div id="topbar">
+    <a id="buggy" href="#">Buggy</a>
+    <a id="crypto" href="#">Crypto</a>
+    <a id="server" href="#">Server</a>
+    <a id="hire" href="hire.html">Hire me</a>
+  </div>
+<div id="img"><h1 class="title">Fjord1 Svelecrew</h1><h1 class="subbtn">Enter</h1></div>
+<div class="main">
+  <div class="mainflex">
+    <h1>Off-Road Buggy</h1>
+    <p>We are building an off-road buggy from old go-kart parts and an old scooter engine. We are currently in the planning phase of the project and are working out what parts we need to make this work.</p>
+  </div>
+  <div class="secondflex">
+  <div class="flexitem">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur laboriosam consectetur earum, necessitatibus, fugiat reiciendis quisquam perspiciatis possimus repudiandae quis maxime repellat temporibus quibusdam quos, veritatis tempora facere neque cumque.</Lor></p>
+  </div>
+  <div class="flexitem">
+    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat totam sequi ipsa, minus iste aliquam optio, perspiciatis vero. Iure optio soluta facere eveniet! Sapiente distinctio laborum provident ipsum, officiis praesentium!</h4>
+  </div>
+  </div>
+</div>
+<div class="main">
+  <div class="mainflex">
+    <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste mollitia ea quaerat repudiandae consequatur libero sunt ut nesciunt, sequi voluptatem fuga iusto porro atque impedit recusandae architecto nisi, illo deserunt.</h1>
+    <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab atque sequi sit quidem ad. Nostrum illum animi consequatur provident eligendi et, non labore numquam in repudiandae. Magni quod vel, a.</span>
+    <span>Natus minus eius quam distinctio eveniet optio laudantium maiores saepe eaque, nostrum fugit sint. Velit adipisci, voluptatibus asperiores, reprehenderit assumenda aspernatur possimus voluptates a unde deleniti aliquam rerum eaque illum.</span>
+    <span>Illo quis eligendi vitae, error, ut eum laudantium natus provident sequi commodi, optio! Reiciendis, suscipit. Quaerat ratione odit commodi maiores, nesciunt facere nihil deserunt amet recusandae repellendus consectetur doloribus officia!</span></p>
+  </div>
+  <div class="secondflex">
+  <div class="flexitem">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur laboriosam consectetur earum, necessitatibus, fugiat reiciendis quisquam perspiciatis possimus repudiandae quis maxime repellat temporibus quibusdam quos, veritatis tempora facere neque cumque.</Lor></p>
+  </div>
+  <div class="flexitem">
+    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat totam sequi ipsa, minus iste aliquam optio, perspiciatis vero. Iure optio soluta facere eveniet! Sapiente distinctio laborum provident ipsum, officiis praesentium!</h4>
+  </div>
+  </div>
+
+</div>
+<div id="footer">
+  <p>©Erik Skår     |      2017</p>
+</div>
+
+<script>
+$(".subbtn").click(function() {
+  $('html, body').animate({
+      scrollTop: $("#img").offset().top + $(window).height() - $(window).height()/100*7
+  }, 2000);
+  });
+  $("#buggy").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#img").offset().top + $(window).height() - $(window).height()/100*7
+    }, 2000);
+    });
+  $("#crypto").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#img").offset().top + $(window).height()*2 - $(window).height()/100*7*2
+    }, 2000);
+    });
+  </script>
+</body>
+</html>

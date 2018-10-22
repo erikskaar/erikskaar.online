@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="main.css">
+  <title>APM Clckr</title>
+</head>
+<body>
+  <div id="header">
+    <h1>APM Clckr</h1>
+  </div>
+    <div id="main">
+      <div id="cntdiv">
+        <p><span id="counter">0</span> APM</p>
+        <p><span id=cAPM>0</span> Current APM</p>
+        <p><span id="pAPM">0</span> Pure APM</p>
+        <p><span id="wAPM">0</span> Worker APM</p>
+        <p><span id=tcounter>0</span> Actions</p>
+      </div>
+      <div id="kbdiv">
+        <img id="kbimg" src="kb.png" alt="">
+      </div>
+      <div id="buydiv">
+        <div class="buyitem">
+          <p>+30 APM <br> -600 ACTIONS</p>
+          <img id="birb" src="birb.jpg" alt="">
+          <p>Drinking Birb</p>
+        </div>
+        <div class="buyitem">
+          <p>+60 APM <br> -2000 ACTIONS</p>
+          <img id="kCat" src="cat.png" alt="">
+          <p>Keyboard Cat</p>
+        </div>
+        <div class="buyitem">
+          <p>+300 APM <br> -10000 ACTIONS </p>
+          <img id="nk" src="korean.jpg" alt="">
+          <p>Normal Korean</p>
+        </div>
+        <div class="buyitem">
+          <p>+600 APM <br> -20000 ACTIONS</p>
+          <img id="pk" src="prokorean.jpg" alt="">
+          <p>Pro Korean</p>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <p>Erik Skår | 2018</p>
+    </div>
+</body>
+<script type="text/javascript">
+
+///////////////////
+  var array = [];
+  var tclicks =0;
+  for (var i = 0; i < 60 ; i++) {
+   array.push(0);
+  }
+
+  ////////////////
+  var kb = document.querySelector("#kbimg");
+  var counter = document.querySelector("#counter");
+  var clickapm = 0;
+  var apmdiv = 0;
+  kb.addEventListener("click", click);
+  window.addEventListener("keyup",click, false);
+  function click() {
+    array[second] +=1;
+    tclicks +=1;
+
+  }
+  //////////////////
+ var second = 0;
+ var multi = 0;
+ setInterval(minute, 1000)
+ function minute() {
+   second += 1;
+   console.log(second);
+   array.shift();
+   array.push(multi);
+   tclicks += multi;
+   if (second%60 == 0) {
+      second = 0;
+   }
+ }
+
+ ///////////////
+ var clicks = 0;
+ setInterval(update, 10);
+ function update() {
+  //counter.innerHTML=clickapm;
+  counter.innerHTML = array.reduce(getSum);
+  document.querySelector("#wAPM").innerHTML = multi*60;
+  document.querySelector("#tcounter").innerHTML = parseInt(tclicks);
+    if (multi>=0) {
+      document.querySelector("#pAPM").innerHTML = array[second]*60-multi;
+    } else {
+      document.querySelector("#pAPM").innerHTML = array[second]*60;
+    }
+
+    if (array[second] == multi) {
+      document.querySelector("#cAPM").innerHTML =multi*60;
+    } else {
+        document.querySelector("#cAPM").innerHTML = array[second]*60 + multi*60;
+    }
+
+  }
+
+  /////////////
+ function getSum(total,num) {
+   return total + num;
+
+ }
+
+document.querySelector("#kCat").addEventListener("click",kCat);
+document.querySelector("#birb").addEventListener("click",birb);
+document.querySelector("#nk").addEventListener("click",nk);
+document.querySelector("#pk").addEventListener("click",pk);
+
+ ////////////// birb
+ var bCounter = 0;
+ function birb() {
+   if (tclicks >= 600) {
+     tclicks = tclicks - 600;
+     bCounter += 1/2;
+     multi += bCounter;
+   } else {
+     alert("Not enough actions");
+   }
+ }
+
+/////////// cat
+var cCounter = 0;
+function kCat() {
+  if (tclicks >= 2000) {
+    tclicks = tclicks - 2000;
+    cCounter +=1;
+    multi += cCounter;
+  } else {
+    alert("Not enough actions");
+  }
+
+}
+
+////////////////// normal korean
+var nCounter = 0;
+function nk() {
+  if (tclicks >= 10000) {
+    tclicks = tclicks - 10000;
+    nCounter += 5;
+    multi += nCounter;
+  } else {
+    alert("Not enough actions");
+  }
+}
+
+///////////////////pro korean
+var pCounter = 0;
+function pk() {
+  if (tclicks >= 20000) {
+    tclicks = tclicks - 20000;
+    pCounter += 10;
+    multi += pCounter;
+  } else {
+    alert("Not enough actions");
+  }
+}
+
+</script>
+<!-- things to
+*FIX PURE APM
+  -pure apm is negative if you buy a worker, until the queue catches up
+  -pure apm gets reset every second
+*GETTING MORE WORKERS THAN YOU'RE SUPPOSED TO
+
+-->
+</html>

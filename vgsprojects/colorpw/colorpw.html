@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="colorpw.css">
+  <title>Best PW</title>
+</head>
+<body>
+  <p>Username: <input type="text" name="username" value="" placeholder="insert username"></p>
+  <p>Favorite color: <input type="color" class="color2"> <input type="text" id="color" name="color" value="#000000" placeholder="insert color"></p>
+  <button type="button" name="button">Submit</button>
+  <p id="response"></p>
+</body>
+<script type="text/javascript">
+$("button").click(function(){
+  if (document.getElementById('color').value == "#bada55") {
+  document.getElementById('response').innerHTML = "SUCCESS";
+  console.log("success");
+} else {
+  document.getElementById('response').innerHTML = "FAILURE";
+  console.log("failure");
+}})
+
+</script>
+
+</html>

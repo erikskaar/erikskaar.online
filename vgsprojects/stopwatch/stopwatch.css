@@ -1,0 +1,28 @@
+body {
+  margin: 0;
+  background-color: #333;
+
+}
+p {
+  text-align: center;
+  margin: auto;
+  color: white;
+  text-transform: uppercase;
+  padding: 2em;
+}
+input {
+  text-align: center;
+  width: 50%;
+  margin-left: 25%;
+  height: 5em;
+  text-transform: uppercase;
+  font-size: 1em;
+}
+#p2, #p1 {
+  border: 1px solid white;
+  width: 50%;
+}
+
+#p2:hover, #p1:hover {
+  cursor: pointer;
+}

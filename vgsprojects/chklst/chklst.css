@@ -1,0 +1,80 @@
+body {
+  margin: 0;
+  background-color: #333;
+}
+#main, .content, .list {
+  width: 100%;
+}
+.header {
+  width: 100%;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 3em;
+  color: white;
+}
+.list, #add, #objects {
+  color: white;
+  margin: auto;
+  display: flex;
+  font-size: 2em;
+}
+.list {
+  flex-wrap: wrap;
+}
+.list *, #add *, #objects * {
+
+  text-align: center;
+}
+#add input {
+  background-color: #333;
+  color: white;
+  border-color: #EEE;
+  box-shadow: none;
+  shadow: none;
+  text-transform: uppercase;
+  font-size: 1em;
+  width: 95%;
+}
+#add #open {
+  text-align: center;
+  margin: auto;
+  width: 5%;
+}
+#open:hover {
+  cursor: pointer;
+}
+#add {
+  width: 100%;
+  margin-bottom: 1em;
+}
+#objects {
+    text-transform: uppercase;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: center;
+}
+#objects div {
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  text-align: center;
+}
+.a95 {
+  text-transform: uppercase;
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  text-align: center;
+  border: 2px solid #EEE;
+  margin: 0;
+}
+.x5 {
+  width: 5%;
+  margin: 0;
+}
+.a95:hover, .x5:hover {
+  cursor: pointer;
+}

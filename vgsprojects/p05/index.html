@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="main.css">
+  <title>Document</title>
+</head>
+<body>
+  <div id="header">
+    <h1>Taim Taker</h1>
+      <h2 id="h2" onclick="addTime()"><span id="minutes">00</span>:<span id="seconds">00</span>:<span id="milli">00</span></h2>
+  </div>
+  <div id="main">
+
+  </div>
+</body>
+<script type="text/javascript">
+  var milli = 0;
+  var seconds = 0;
+  var minutes = 0;
+  var x = 1;
+  setInterval(function() {
+    milli+=1;
+    document.querySelector("#milli").innerHTML = milli;
+    if (milli >=100) {
+      milli = 0;
+      seconds +=1;
+      document.querySelector("#milli").innerHTML = milli;
+      document.querySelector("#seconds").innerHTML = seconds;
+    }
+    if (seconds>=60) {
+      seconds = 0;
+      minutes+=1;
+      document.querySelector("#seconds").innerHTML = seconds;
+      document.querySelector("#minutes").innerHTML = minutes;
+    }
+  }, 10);
+  function addTime() {
+    if (x<=25) {
+      console.log("something");
+      var addP = document.createElement("p");
+      addP.innerHTML = "Round " + x + " - " + minutes + ":" + seconds + ":" + milli;
+      x++;
+      document.querySelector("#main").appendChild(addP);
+    }
+
+
+  }
+</script>
+</html>

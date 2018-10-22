@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="drop.css">
+</head>
+<body>
+  <div class="main">
+    <p id="drop" onclick="dropit()">Drop It!</p>
+  </div>
+  <div class="audio">
+
+  </div>
+  <script>
+    function astrobe() {
+      document.body.style.backgroundColor = "#333";
+      document.getElementById('drop').style.backgroundColor = "white";
+      document.getElementById('drop').style.color = "red";
+      document.getElementById('drop').style.borderColor = "blue";
+    }
+    function strobe() {
+      document.body.style.backgroundColor = "white";
+      document.getElementById('drop').style.backgroundColor = "#333";
+      document.getElementById('drop').style.color = "blue";
+      document.getElementById('drop').style.borderColor = "red";
+      setTimeout (astrobe, 50);
+    }
+    function timeit() {
+
+    }
+    function dropit() {
+      var drop = Math.floor(Math.random() * 4)
+      var downlike = new Audio("downlike.mp3");
+      var surface = new Audio("surface.mp3");
+      var secrets= new Audio("secrets.mp3");
+      var kids = new Audio("kids.mp3");
+      var songs = [downlike, surface, secrets, kids];
+      songs[drop].play();
+      setTimeout(function play() {setInterval(strobe, 100);}, 5000);
+      timeit();
+
+    };
+
+  </script>
+</body>
+</html>

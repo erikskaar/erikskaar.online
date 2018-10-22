@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="main.css">
+  <title>Oppgave 1</title>
+</head>
+<body>
+  <div id="header">
+      <h1 id="h1">Oppgave 1</h1>
+  </div>
+  <div id="main">
+    <div id="stpt" class="img">
+    </div>
+    <div id="roma" class="img">
+    </div>
+    <div id="nyc" class="img">
+    </div>
+  </div>
+  <div id="footer">
+
+  </div>
+</body>
+<script type="text/javascript">
+  document.querySelector("#stpt").addEventListener("click", stpt); //listeneres for om man trykker på bildene
+  document.querySelector("#roma").addEventListener("click", roma);
+  document.querySelector("#nyc").addEventListener("click", nyc);
+
+  function stpt() {
+    console.log("stpt");
+    window.location.assign("stptfullres.jpg"); //går direkte til full resolusjonsversjon av bildet
+  }
+
+  function roma() {
+    console.log("roma");
+    var newDiv = document.createElement("div");  //lager en div med en video i
+    newDiv.style.position = "fixed";
+    newDiv.width = "100%";
+    newDiv.height = "90vh";
+    newDiv.id = "vidDiv";
+    newDiv.style.margin = "auto";
+    var newP = document.createElement("p");
+    newP.innerHTML = "Click video to close";
+    var newCon = document.createElement("video");
+    newCon.src = "RomaVideo.mp4";
+    newCon.controls = "controls";
+    newCon.autoplay = "autoplay";
+    newCon.id = "vid";
+    newDiv.appendChild(newP);
+    newDiv.appendChild(newCon);
+    document.querySelector("#header").insertBefore(newDiv, document.querySelector("#h1"));
+    document.querySelector("#vid").addEventListener("click", close); //legger til lukkefunksjonen
+  }
+  function nyc() {
+    console.log("nyc");
+    var newDiv = document.createElement("div");
+    newDiv.style.position = "fixed";
+    newDiv.style.width = "100%";
+    newDiv.style.height = "100vh";
+    newDiv.style.backgroundColor = "white";
+    newDiv.id = "quizdiv";
+    newDiv.style.margin = "auto";
+    var newP = document.createElement("p");
+    newP.innerHTML = "Hvilken bygning er på dette bildet?"
+    newDiv.appendChild(newP);
+    var buildings = ["-Velg en", "World Trade Center", "Empire State Building", "Burj Khalifa"]; //teksten til valgene
+    var newSel = document.createElement("select"); //lager et select element
+    newSel.id = "select";
+    for (var i = 0; i < 4; i++) { // en for-loop for å lage option elementene
+      var newInp = document.createElement("option");
+      newInp.value = i;
+      newInp.innerHTML = buildings[i];
+      newSel.appendChild(newInp);
+
+    }
+    newDiv.appendChild(newSel);
+    var newBut = document.createElement("button");
+    newBut.innerHTML = "submit";
+    newBut.type = "submit";
+    newBut.id = "button";
+    newDiv.appendChild(newBut);
+    var newImg = document.createElement("img");
+    newImg.src = "wtc.jpg";
+    newImg.style.width = "50%";
+    newDiv.appendChild(newImg);
+    document.querySelector("#header").insertBefore(newDiv, document.querySelector("#h1"));
+    document.querySelector("#button").addEventListener("click", test);
+  }
+  function close() { //for å lukke videoen klikker man på selve videoen
+    document.querySelector("#header").removeChild(document.querySelector("#header").firstElementChild);
+  }
+
+  function test() {
+    if (document.querySelector("#select").value == 1) {
+      alert("Du vet allerede noe om New York - hva med å lære mer?");
+    } else {
+      alert("Det var ikke rett - kanskje på tide med en tur til New York?");
+    }
+  }
+</script>
+</html>

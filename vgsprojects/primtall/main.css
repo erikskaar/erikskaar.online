@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: red;
+}
+.header {
+  width: 100%;
+  text-align: center;
+}
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  text-align: center;
+}
+.flex {
+  width: 100%;
+  text-align: center;
+}
+input {
+  text-align: center;
+  font-size: 3em;
+}
+p {
+  font-size: 5em;
+  font-weight: bold;
+}

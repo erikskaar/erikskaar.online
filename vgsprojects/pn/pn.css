@@ -1,0 +1,38 @@
+body {
+  margin-left: 0;
+  background-color: #333;
+}
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+p {
+  width: 33%;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  font-size: 2em;
+  margin: auto;
+  text-align: center;
+  color: white;
+}
+input {
+  width: 50%;
+  margin-left: 25%;
+  height: 2em;
+  text-align: center;
+  font-size: 2em;
+}
+p:hover {
+  cursor: pointer;
+}
+#p1 {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  cursor: default;
+}
+.main p {
+  background-color: black;
+  border:1px solid #EEE;
+}

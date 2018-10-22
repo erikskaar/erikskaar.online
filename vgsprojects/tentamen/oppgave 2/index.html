@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="main.css">
+  <title>Oppgave 2</title>
+</head>
+<body>
+  <div id="header">
+    <h1>Oppgave 2</h1>
+  </div>
+  <div id="main">
+      <div id="chooser">
+        <p>Please select a language</p> <!--For å velge hvilket språk man vil ta quizen i-->
+        <button onclick="ame()" type="button" name="button">American</button>
+        <button onclick="fre()" type="button" name="button">French</button>
+        <button onclick="ger()" type="button" name="button">German</button>
+      </div>
+
+
+      <div id="american" class="sprak">
+          <div id="aq" class="quiz">
+              <div id="a" class="questions">
+                  <p>Hva betyr ordet where?</p> <!-- bruker onclick for å at det skal være lettere å endre hver enkelt uten å gi dem separat id -->
+                  <button onclick="rett()" type="button" name="button">Hvor</button>        <br>
+                  <button onclick="galt()" type="button" name="button">Vi er</button> <br>
+                  <button onclick="galt()" type="button" name="button">Var</button> <br>
+                  <button onclick="galt()" type="button" name="button">Hvorfor</button> <br>
+              </div>
+              <div id="b" class="questions">
+                  <p>Hvilke(t) ord kan legges til her?</p>
+                  <p>How are...</p>
+                  <button onclick="galt()" type="button" name="button">You</button>           <br>
+                  <button onclick="galt()" type="button" name="button">John doing</button> <br>
+                  <button onclick="rett()" type="button" name="button">Things</button> <br>
+                  <button onclick="galt()" type="button" name="button">The house</button> <br>
+                  <button onclick="galt()" type="button" name="button">The wife</button> <br>
+              </div>
+              <div id="c" class="questions">
+                  <audio controls>
+                    <source src="translate.mp3" type="audio/mpeg">
+                  </audio>
+                  <p>Spill av lydfilen og velg riktig oversettelse</p>
+                  <button onclick="galt()" type="button" name="button">Hei, mitt navn er Tom</button> <br>
+                  <button onclick="galt()" type="button" name="button">Jeg er Tom</button> <br>
+                  <button onclick="rett()" type="button" name="button">Kjenner du Tom?</button> <br>
+                  <button onclick="galt()" type="button" name="button">Når kommer Tom?</button> <br>
+              </div>
+          </div>
+      </div>
+      <div id="french" class="sprak">
+          <div id="fq"class="quiz">
+            <p>There is no content here yet</p> <!-- Her kan man legge til spørsmål for andre språk -->
+          </div>
+      </div>
+      <div id="german" class="sprak">
+        <div id="gq" class="quiz">
+          <p>There is no content here yet</p> <!-- Her kan man legge til spørsmål for andre språk -->
+        </div>
+      </div>
+  </div>
+</body>
+<script type="text/javascript">
+var poeng = 0; //poengvariabelen
+var i = 0; //spørsmålsnummer
+var letters = ["a", "b", "c"]; //siden man ikke kan bruke rene tall som id så brukte jeg en array med bokstaver istedet
+  function ame() {
+    document.querySelector("#american").style.display = "block"; //amerikansk
+    document.querySelector("#french").style.display = "none";
+    document.querySelector("#german").style.display = "none";
+  }
+  function fre() {
+    document.querySelector("#american").style.display = "none"; //fransk
+    document.querySelector("#french").style.display = "block";
+    document.querySelector("#german").style.display = "none";
+  }
+  function ger() {
+    document.querySelector("#american").style.display = "none"; // tysk
+    document.querySelector("#french").style.display = "none";
+    document.querySelector("#german").style.display = "block";
+  }
+  function rett() { // hver gang man får rett trigges denne
+    poeng +=1;
+    alert("Riktig!");
+    next();
+  }
+  function galt() { // hver gang man får feil trigges denne
+    poeng -=1;
+    alert("Det var dessverre feil :(")
+    next();
+  }
+  function next() { //denne gir deg nye spørsmål
+    if (i<2) { // om quizen ikke er ferdig får du neste spørsmål
+      i += 1;
+      document.querySelector("#" +letters[i-1]).style.display = "none";
+      document.querySelector("#" +letters[i]).style.display = "block";
+      console.log(poeng);
+
+    } else { //om quizen er ferdig vil den gi deg tilbakemelding basert på hvor bra du gjorde det
+      if (poeng < 0) {
+        alert("Dette gikk ikke så bra, men det er håp for alle som vil lære et nytt språk!");
+
+      } else if (poeng >= 0 && poeng < 3) {
+        alert("Vi tilbyr språkkurs i New York hvor du kan bli enda bedre!");
+      } else if (poeng == 3) {
+        alert("Dette språket kan du godt!");
+      }
+    }
+
+
+  }
+</script>
+</html>

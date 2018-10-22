@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  background-color: #333;
+  font-family: sans-serif;
+}
+h1, h2 {
+  color: #EEE;
+}
+#header {
+  width: 100%;
+  text-align: center;
+}
+#main {
+  max-width: 800px;
+  margin: auto;
+  display: flex;
+  text-align: center;
+  flex-wrap: wrap;
+}
+#vid {
+  margin: auto;
+}
+button {
+  position: relative;
+  background-color: #EEE;
+  border: none;
+  box-shadow: none;
+  padding: 0.5em;
+  border-radius: 5px;
+  color: #333;
+  font-size: 1.2em;
+
+}
+audio {
+  margin: auto;
+  width: 100%;
+  padding-bottom: 443px;
+}
+#swtch {
+  margin-right: auto;
+  position: fixed;
+  left: 69%;
+  top: 5px;
+}
+button:hover {
+  cursor: pointer;
+}
+video {
+  width: 100%;
+}
+h2 {
+  position: relative;
+  margin-right: auto;
+  text-transform: uppercase;
+}

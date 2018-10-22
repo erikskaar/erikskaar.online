@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="mohl.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="header">
+    <h1>Choose a door</h1>
+  </div>
+  <div id="main">
+  </div>
+  <script type="text/javascript">
+    var x = Math.floor((Math.random()*3));
+    var num = Math.floor((Math.random()*3));
+    console.log("num =" +num);
+    console.log("x =" +x);
+    if (x == num) {
+      var x = num +1; //fix
+      if (x== 3) {
+        var x = 0;
+      }
+      console.log("refreshed");
+      console.log("new x=" + x);
+    }
+    for (var i = 0; i < 3; i++) {
+      var addDiv = document.createElement("div");
+      addDiv.className = "door";
+      document.querySelector("#main").appendChild(addDiv);
+      var addP = document.createElement("p");
+      addP.innerHTML = i+1;
+      addP.addEventListener("click", function() {
+        var thNum = this.id;
+        this.innerHTML = this.innerHTML +" chosen";
+        document.querySelector(".door").style.width = "50vw"; //fix
+        document.querySelector("h1").innerHTML = "Wanna switch?";
+        document.querySelector("#" +arr[x]).parentNode.remove();
+        console.log(thNum);
+        if (thNum == arr[num]) {
+          console.log("winner");
+        } else {
+          console.log("loser");
+        }
+      });
+      var arr = ["a", "b", "c"];
+      addP.id = arr[i];
+      addDiv.appendChild(addP);
+    }
+  </script>
+</body>
+</html>

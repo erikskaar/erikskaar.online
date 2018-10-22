@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" name="" value="" placeholder="Name" id="name">
+  <input type="text" name="" value="" placeholder="link" id="link">
+  <button type="button" name="button" onclick="add()">SUBMIT</button>
+  <div id="main">
+
+  </div>
+  <script type="text/javascript">
+    function add() {
+      var link = document.querySelector("#link").value;
+      var name = document.querySelector("#name").value;
+      var btn = document.createElement("button");
+      var t = document.createTextNode(name);
+      btn.type="button";
+      btn.appendChild(t);
+      var a =document.createElement("a");
+      a.id="a";
+      a.setAttribute("target", "_blank");
+      a.href = "http://" +link;
+      a.appendChild(btn);
+      document.querySelector("#main").appendChild(a);
+    }
+  </script>
+</body>
+</html>

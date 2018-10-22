@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> <!-- importerer jquery -->
+  <link rel="stylesheet" href="chklst.css">
+  <title>Document</title>
+</head>
+<body>
+  <div id="main">
+    <div class="header">
+      <p id="head">chklst</p>
+      <p><span id="nrof">0</span>/<span id="totof">0</span> completed</p> <!-- liste over strøkne objekter-->
+    </div>
+    <div class="content">
+      <div class="list">
+        <div id="add">
+          <input id="input" type="text" name="0" placeholder ="insert checkpoint" maxlength="25"> <!--der man skriver inn det man skal huske -->
+          <p id="open" onclick="add()">+</p>  <!-- plussknappen som legger til det man har skrevet -->
+        </div>
+        <div id="objects"> <!-- hvor objektene blir laget -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    var x = 1;  //variablen som brukes for å gi id osv til objektene.
+    open = document.querySelector('#open');
+    function add() { //funksjonen som legger til elementene
+      var addDiv = document.createElement('div'); //lager divene som teksten ligger i
+      addDiv.id = "d"+x; //gir hvert element en id som d[x]
+      var addInp = document.createElement('p'); //lager teksten
+      addInp.className = "a95"; //setter classen til teksten. a95 fordi den tar opp 95% av skjermen
+      addInp.style.textDecoration = "none"; //setter text-decoration til none fordi det forhindrer at man må trykke 2 ganger første gangen man stryker noe
+      addInp.innerHTML = input.value; //setter den indre HTMLen av p-ene til det som står i inputfeltet
+      addInp.addEventListener("click", function() { //når man trykker på en av p-elementene gjennomføres denne funksjonen
+      if (this.style.textDecoration == "none") { //sjekker om den har noen tekst-dekorasjon
+        this.style.textDecoration = "line-through"; //tegner en linje gjennom teksten for å vise at den er strøket
+        this.style.color = "green"; //setter fargen på teksten til grønn for lettere å se at den er strøket.
+        this.style.borderColor = "green"; //setter rammefargen til grønn av samme grunn som over
+        addDiv.className = "obj"; //gir diven som tekstelementet er i en klasse av "obj" som gjør at man kan telle hvor mange av de som er strøket
+      } else { //hvis man trykker og den har tekstdekorasjon fra før  så
+        this.style.textDecoration = "none"; //fjerner all tekstdekorasjon
+        this.style.color = "#EEE"; //setter fargen til standardfargen jeg bruker på tekst på nettsiden
+        this.style.borderColor = "#EEE"; //setter rammefargen tilbake til det vanlige.
+        }
+      });
+      addDiv.appendChild(addInp); //setter p elementet inn i diven
+      var addX = document.createElement('p'); //lager X-en som fjerner elementer
+      addX.className = "x5"; // setter klassen til x5 fordi det er en X og den har en width på 5
+      addX.innerHTML = "X"; //skriver X
+      addX.style.color = "red"; //setter fargen til rød
+      addX.addEventListener("click", function() {this.parentElement.parentElement.removeChild(this.parentElement); //dersom du klikker på X-en så fjernes hele diven
+      });
+      addDiv.appendChild(addX); //legger Xen inn i diven
+      document.querySelector('#objects').appendChild(addDiv); //legger diven inn i objectsdiven som er foreldrediven til alle objektene
+      document.querySelector('#input').value = ""; //setter verdien til inputfeltet til ingenting slik at man ikke trenger å viske ut hver gang
+      var y = x; //legger til y som skal hjelpe til med å telle antall strøket og antall totale diver i objectsdiven
+      document.querySelector('#nrof').innerHTML = 1; //setter number of diven til 1 til å starte med
+      document.querySelector('#nrof').innerHTML = $('#objects > .obj').length; //bruker litt jquery for å telle antall diver inne i diven med en klasse, men dette oppdaterer seg kun når man har strøket noe, også lagt til flere diver etterpå. Man kan heller ikke fjerne diver fra totalen sånn som det er nå, og disse er de eneste funksjonene som mangler.
+      x++; //øker x slik at ingen div får samme id som den forrige
+      document.querySelector('#totof').innerHTML = y; //setter totale diver i objectsdiven til y
+    };
+    window.addEventListener("keydown", checkKeyPressed, false);
+
+    function checkKeyPressed(evt) { //sjekker om man trykker på enter siden da vil den gjøre add() funksjonen
+      if (evt.keyCode == "13") {
+          add();
+      }
+    };
+    //Som skrevet litt lengre oppe så er det som mangler på nettsiden å fullføre fullførtoversikten min. Jeg skulle gjerne ha gjort den ferdig, men sånn som jeg har skrevet siden nå så finner jeg ingen god løsning på det. Med mer tid ville jeg sikkert fått dette til å fungere, men med det tar jeg høstferie :)
+  </script>
+</body>
+</html>

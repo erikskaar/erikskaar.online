@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="main.css">
+  <title>Document</title>
+</head>
+<body>
+  <div id="header">
+    <p id="banner">AYYLMAO MOVING ACROSS THE SCREEN YO</p>
+  </div>
+  <div id="main">
+    <button id="btn" type="button" name="button" onclick="slower()">SLOWER</button>
+    <h2 class="h2"><span id="clc">200</span> kWh</h2>
+    <h2 class="h2"><span id="wind">0</span> m/s</h2>
+    <img onclick="zero()" id="sun" src="sun.png" alt="">
+    <div class="car">
+      <img id="bil" src="bil.png" alt="">
+      <img id="rim1" class="rims" src="rims2.png" alt="">
+      <img id="rim2" class="rims" src="rims2.png" alt="">
+    </div>
+    <div class="mill">
+      <img id="stolpe" src="stolpe2.png" alt="">
+      <img id="rotor" src="rotor2.png" alt="">
+    </div>
+    <img id="ground" src="ground2.png" alt="">
+  </div>
+</body>
+<script type="text/javascript">
+
+  var x = 0;
+  var start = window.setInterval(function() {
+    document.querySelector("#banner").style.marginLeft = x + "%"; //marquee funksjonen
+    x+= 0.1;
+    if (x>0) {
+      x = x + x/30; //eksponensiell økning
+    }
+    if (x >= 100) { // når den går ut av skjermen så starter den på nytt
+      x = -25;
+    }
+  }, 10); // oppdateres hvert 10 millisekund
+  var b = 0;
+  var z = 0;
+  if (z == 0) { //dersom vindmølla ikke snurrer
+    document.querySelector("#clc").innerHTML = 0;
+    document.querySelector("#wind").innerHTML = 0;
+    document.querySelector("#btn").innerHTML = "START";
+  } else { //dersom vindmølla snurrer
+    document.querySelector("#wind").innerHTML = 25*z;
+    document.querySelector("#clc").innerHTML= 400/z;
+  }
+
+  function slower() { //funksjon for raskere og saktere  rotasjon
+    if (b == 0) {
+      z = 2;
+      document.querySelector("#rotor").style.animationDuration = z +"s"; //endrer hvor lenge animasjonen varer som gjør animasjonen raskere / treigere
+      document.querySelector("#btn").innerHTML = "FASTER";
+      document.querySelector("#clc").innerHTML = 400/z
+      document.querySelector("#wind").innerHTML = 25/z;
+      b = 1;
+    } else {
+      z = 1;
+      document.querySelector("#rotor").style.animationDuration = z +"s"; // --||--
+      document.querySelector("#btn").innerHTML = "SLOWER";
+      document.querySelector("#clc").innerHTML = 400/z;
+      document.querySelector("#wind").innerHTML = 25/z;
+      b = 0;
+    }
+
+  }
+  function zero() { //funksjon som stopper vindmølla (fungerer ikke lenger)
+    document.querySelector("#clc").innerHTML = 0;
+    document.querySelector("#wind").innerHTML = 0;
+    document.querySelector("#rotor").style.animationDuration = 0 +"s";
+    document.querySelector("#btn").innerHTML = "START";
+  }
+</script>
+</html>

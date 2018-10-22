@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="chrstn.css">
+  <title>Ayylmao</title>
+</head>
+<body>
+<div id="header" onclick="hid()">
+  <div class="mhead">
+    <h1>THIS IS A CHRISTIAN WEBSITE</h1>
+  </div>
+  <div class="mhead">
+    <p>Click to enter the holy land</p>
+  </div>
+</div>
+<div id="main">
+  <div class="flex">
+    <input type="text" name="" value="" placeholder="Fornavn" id="fornavn"> <br>
+  </div>
+  <div class="flex">
+    <input type="text" name="" value="" placeholder="Etternavn" id="etternavn"> <br>
+  </div>
+    <div class="flex">
+      <input type="text" name="" placeholder="Fødselsnummer(11 siffer)" id="fnr">
+    </div>
+    <div class="flex">
+      <input type="text" name="" placeholder="Folkeregistrert adresse" id="adresse">
+    </div>
+    <div class="flex">
+      <input type="text" name="" placeholder="Postnr." id="postnr">
+    </div>
+    <div class="flex">
+      <input type="text" name="" placeholder="Poststed." id="poststed">
+    </div>
+    <div class="flex">
+      <input type="radio" name="rbutton" value="Male" class="rbutton">Male</input>
+      <input type="radio" name="rbutton" value="Female" class="rbutton">Female</input>
+      <input type="radio" name="rbutton" value="Blasphemous" class="rbutton">Transgender</input>
+    </div>
+    <div class="flex">
+      <button type="button" name="button" onclick="submit()">Submit</button>
+    </div>
+
+</div>
+<script type="text/javascript">
+
+function hid() {
+  document.querySelector("#header").style.display = "none";
+  document.querySelector("#main").style.display = "flex";
+};
+ern = 0;
+frn = 0;
+fnr = 0;
+function submit() {
+  if (document.querySelector(".rbutton:checked").value == "Blasphemous") {
+    alert("The God doesn't accept this blasphemous gender. Please specify another one.");
+  } else {
+    if (document.querySelector("#fnr").value.match(/[a-z]/i)) {
+      alert("Your SSN contains letters")
+    } else {
+      frn = document.querySelector("#fornavn").value;
+      ern = document.querySelector("#etternavn").value;
+      fnr = document.querySelector("#fnr").value;
+      console.log("Fornavn: " +  frn);
+      console.log("Etternavn: " + ern);
+      console.log("Kjønn: " + document.querySelector(".rbutton:checked").value);
+      console.log("Personnummer: " + document.querySelector("#fnr").value);
+      console.log("Adresse: " + document.querySelector("#adresse").value);
+      console.log("Postnummer: " + document.querySelector("#postnr").value);
+      console.log("Poststed: " + document.querySelector("#poststed").value);
+      document.querySelector("body").removeChild(document.querySelector("#header"));
+      document.querySelector("body").removeChild(document.querySelector("#main"));
+      document.querySelector("body").style.backgroundColor = "#525659";
+      document.querySelector("body").style.backgroundImage = "none";
+      add();
+    }
+  }
+}
+
+function add() {
+  var addDiv = document.createElement("div");
+  addDiv.id = "newDiv";
+  addDiv.style.margin = "auto";
+  var addImg = document.createElement("img");
+  addImg.src = "dnk.jpg";
+  addImg.width = 220;
+  addImg.style.padding = "20px";
+  addDiv.appendChild(addImg);
+  var addh1 = document.createElement("h1");
+  addh1.innerHTML = "Innmelding i Den norske kirke";
+  addDiv.appendChild(addh1);
+  var addP = document.createElement("p");
+  addP.innerHTML = "Jeg vil med dette melde meg inn i den norske kirke. <br> Medlemsskap forutsetter dåp. Man kan ikke være medlem i flere tros- eller <br> livssynssamfunn i Norge samtidig. <br> Kirkebokfører skal ved innmelding forespørre  om eventuelt medlemsskap i annet tros- <br> eller livssynssamfunn i Norge er brakt til opphør. Ved tvil kan dokumentasjon for <br> utmelding kreves."
+  addDiv.appendChild(addP);
+  var addTable = document.createElement("table");
+  var th0 = addTable.createTHead(0);
+  th0.innerHTML = "Navn(etternavn, fornavn og mellomnavn) <span class='leftie'>Fødselsnummer (11 siffer)</span>";
+  var td0 = addTable.insertRow(0);
+  var inp0 = document.createElement("input");
+  inp0.style.width = "40vw";
+  inp0.value = ern + ", " + frn;
+  var td1 = addTable.insertRow(1);
+  var inp1 = document.createElement("input");
+  inp1.style.width = "27vw";
+  inp1.value = fnr;
+  inp1.className = "leftie";
+  td0.appendChild(inp0);
+  td0.appendChild(inp1);
+  addDiv.appendChild(addTable);
+  document.querySelector("body").appendChild(addDiv);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="stopwatch.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <title>Stopwatch</title>
+</head>
+<body>
+  <p>Username</p><input type="text" name="" value="" placeholder="insert username">
+  <p>Password</p>
+  <p id="p1">test</p>
+  <p>Confirm Password</p>
+  <p id="p2">test</p>
+  <p id="p3">Click to set the password</p>
+  <script type="text/javascript">
+    var password1 = ["banana","car","dragon1234","hunter2","testbot","password1234","p455w0rd","hackerman","idkdude","ayylmaomoradi",11,12,13,14,15,16,17,18,19,20];
+    var rand1 = 0;
+    var interval1 = setInterval(change1, 25);
+    console.log(password1);
+    console.log(rand1);
+    function change1(){
+      document.getElementById('p1').innerHTML = password1[rand1];
+      rand1++;
+      if (rand1>=password1.length) {
+        rand1 = 0;
+      }
+    }
+    $("#p1").click(function(){
+      clearInterval(interval1);
+    });
+
+    var password2 = ["banana","car","dragon1234","hunter2","testbot","password1234","p455w0rd","hackerman","idkdude","ayylmaomoradi",11,12,13,14,15,16,17,18,19,20];
+    var rand2 = 0;
+    var interval2 = setInterval(change2, 25);
+    console.log(password2);
+    console.log(rand2);
+    function change2(){
+      document.getElementById('p2').innerHTML = password2[rand2];
+      rand2++;
+      if (rand2>=password1.length) {
+        rand2 = 0;
+      }
+
+    }
+    $("#p2").click(function(){
+      clearInterval(interval2);
+      if (document.getElementById('p2').innerHTML === document.getElementById('p1').innerHTML) {
+        document.getElementById('p3').innerHTML = "correct password";
+        console.log("correct pw");
+        document.body.style.backgroundColor = "#008000";
+      } else {
+        document.getElementById('p3').innerHTML = "wrong password";
+        document.body.style.backgroundColor = "#FF0000";
+      }
+    });
+
+  </script>
+</body>
+</html>

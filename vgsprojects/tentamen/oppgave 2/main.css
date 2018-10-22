@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+}
+#header {
+  text-align: center;
+}
+.sprak {
+  display: none; /* display none så de ikke vises i starten */
+}
+#b, #c {
+  display: none; /* display none så de ikke vises i starten */
+}

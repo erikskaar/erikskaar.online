@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="omng.css">
+  <title>Optimal Mining</title>
+</head>
+<body>
+  <div id="head">
+    <h1>Optimal Mining</h1>
+    <p>The best calculator for figuring out which GPUs suit your needs the best</p>
+  </div>
+  <div id="main">
+    <div class="flex">
+      <p title="The amount of money you want to spend in total on GPUs.">Target price ($)<span class="red">*<span></p>
+        <input title="The amount of money you want to spend in total on GPUs." type="text" id="price">
+    </div>
+    <div class="flex" id="gpu">
+      <p><span title="AMD GPUs">Amd</span> | <span title="Nvidia GPUs">Nvidia<span><span class="red">*<span></p>
+      <input id="amd" title="AMD GPUs" class="radio" type="radio" name="team" value="red">
+      <input id="nvidia" title="Nvidia GPUs" class="radio" type="radio" name="team" value="green">
+    </div>
+    <div class="flex">
+      <p title="The number of GPUs you want to buy"># of GPUs <span class="red">*<span></p>
+      <select title="The number of GPUs you want to buy" id="nofgpu" name="">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+    </div>
+  </div>
+  <div id="upperfoot">
+      <p id="req"><span class="red">*required<span></p>
+    <button type="button" name="button" onclick="reco()">Find my setup</button>
+    <h2>We recommend:</h2>
+  </div>
+  <div id="foot"></div>
+  <script type="text/javascript">
+    rx570 = {name:"RX570",team:"red",mhs:"29",price:"290"}; //objektene er alle grafikkortene
+    rx580 = {name:"RX580",team:"red",mhs:"30",price:"310"};
+    hd7970 = {name:"Radeon HD 7970",team:"red",mhs:"13",price:"260"};
+    gtx1070 = {name:"GTX1070",team:"green",mhs:"28",price:"320"};
+    gtx1080 = {name:"GTX1080",team:"green",mhs:"34",price:"390"};
+    gtx1080ti = {name:"GTX1080ti",team:"green",mhs:"38",price:"480"};
+    var Garray = [rx570,rx580,gtx1070,hd7970, gtx1080, gtx1080ti]; //array med alle objektene i
+    function reco() {
+      if (document.querySelector("#foot").hasChildNodes()) {
+        document.querySelector("#foot").innerHTML =""; //sjekker om det er noen diver fra før og hvis det er det så sletter den de forrige så det ikke blir mange etter hverandre.
+      }
+        if (document.querySelector("#amd").checked) { //dersom du velger AMD
+          var x = Garray.filter(function(obj) {
+           return obj.team == document.querySelector("#amd").value && //returnerer alle objekter som har team = red
+           obj.price <= document.querySelector("#price").value/document.querySelector("#nofgpu").value;
+
+         })} else if (document.querySelector("#nvidia").checked) { //dersom du velger nvidia
+              var x = Garray.filter(function(obj) {
+              return obj.team == document.querySelector("#nvidia").value && //returnerer alle objekter som har team = green
+              obj.price <= document.querySelector("#price").value/document.querySelector("#nofgpu").value;
+         })}
+          var sorted = x.sort(function(a,b) {return b.mhs-a.mhs}); //sorterer etter mh/s høyt til lavt
+          var left = document.querySelector("#price").value - (sorted[0].price * document.querySelector("#nofgpu").value); //regner ut hvor mye penger man har igjen dersom man kjøper det billigste kortet
+          var newDiv = document.createElement("div");
+          newDiv.className = "newFlex";
+          var newP = document.createElement("p");
+          newP.innerHTML = "<span class='big' title='The card we recommend for getting the most Mh/s regardless of price'>For most Mh/s: </span><br>" +sorted[0].name + " *" + document.querySelector("#nofgpu").value +"<br>" + "Mh/s: " + sorted[0].mhs*document.querySelector("#nofgpu").value + "<br>" + "Dollars left: "  + left  + "<br> Mh/s/$: " + sorted[0].mhs/sorted[0].price;
+          newDiv.appendChild(newP);
+          document.querySelector("#foot").appendChild(newDiv);
+
+          var newDiv2 = document.createElement("div");
+          newDiv2.className = "newFlex"
+          var newP2 = document.createElement("p");
+          var sortedmd = x.sort(function(a,b) {return b.mhs/b.price-a.mhs/a.price}); //sorterer etter mh/s/pris høyt til lavt
+          var left2 = document.querySelector("#price").value - (sortedmd[0].price * document.querySelector("#nofgpu").value); // regner ut hvor mye penger man har igjen dersom man kjøper det kortet som gir deg best mh/s/$
+          newP2.innerHTML = "<span title='The card we recommend for getting the most Mh/s per dollar' class='big'>For most Mh/s/$: </span><br>" + sortedmd[0].name + " *" + document.querySelector("#nofgpu").value +"<br>" + "Mh/s: " + sortedmd[0].mhs*document.querySelector("#nofgpu").value + "<br>" + "Dollars left: "  + left2 + "<br> Mh/s/$: " + sortedmd[0].mhs/sortedmd[0].price;
+          newDiv2.appendChild(newP2);
+          document.querySelector("#foot").appendChild(newDiv2);
+
+          var newDiv3 = document.createElement("div");
+          newDiv3.className = "newFlex";
+          var newP3 = document.createElement("p");
+          var sortedbp = x.sort(function(a,b) {return a.price - b.price}); //sorterer etter pris fra lavt til høyt
+          var left3 = document.querySelector("#price").value - (sortedbp[0].price * document.querySelector("#nofgpu").value); // regner ut hvor mye penger man har..
+          newP3.innerHTML = "<span title='The card we recommend within this target price that will cost the least amount of money regardless of hashrate' class='big'>For least amount of money spent: </span><br>" + sortedbp[0].name + " *" + document.querySelector("#nofgpu").value +"<br>" + "Mh/s: " + sortedbp[0].mhs*document.querySelector("#nofgpu").value + "<br>" + "Dollars left: "  + left3 + "<br> Mh/s/$: " + sortedbp[0].mhs/sortedbp[0].price;
+          newDiv3.appendChild(newP3);
+          document.querySelector("#foot").appendChild(newDiv3);
+      }
+  </script>
+</body>
+</html>

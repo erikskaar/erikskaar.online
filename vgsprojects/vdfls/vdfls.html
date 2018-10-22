@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="vdfls.css">
+  <title>Document</title>
+
+</head>
+<body>
+  <div id="header">
+    <h1 id="h1">VDFLS</h1>
+  </div>
+  <div id="main">
+    <video id="vid" src="original.mp4" autoplay width="800;" height="475;" loop>
+    </video>
+    <h2 id="subt">Original</h2>
+    <button type="button" title="Switch to audio files" id="swtch" name="button" onclick="swtch()">AUDIO FILES &#8634;</button> <!-- denne er fixed -->
+    <button type="button" id="chng" title="Switch between the different video files" name="button" onclick="change()">CHANGE VIDEO &#8634;</button> <!-- denne er relative -->
+  </div>
+  <script type="text/javascript">
+  var x = 1;
+  var y = 1;
+  var z = 1;
+  var vids = ["original.mp4", "newfile.mp4", "loop.mp4"];
+  var titles = ["Original", "Edited", "Bonus"];
+  function change() { //gjør til at den alltid finner filene.
+    if (x > 2) {
+      x = 0;
+    }
+    document.querySelector("#vid").setAttribute("src", vids[x]);
+    document.querySelector("#subt").innerHTML = titles[x];
+    x++;
+  }
+  function swtch() { //endrer fra video til audio
+    if (z == 1) {
+      document.querySelector("#swtch").innerHTML = "VIDEO FILES &#8634;";
+      document.querySelector("#swtch").title = "Switch to video files";
+      document.querySelector("#chng").innerHTML = "CHANGE AUDIO &#8634;";
+      document.querySelector("#chng").title = "Switch between the different audio files";
+      document.querySelector("#chng").setAttribute("onclick", "chngaud()");
+      document.querySelector("#main").removeChild(document.querySelector("#main").firstElementChild);
+      var aud1 = document.createElement("audio");
+      aud1.src = "original.mp3";
+      aud1.controls = "controls";
+      aud1.loop = "loop";
+      aud1.id = "aud";
+      document.querySelector("#main").insertBefore(aud1, document.querySelector("#subt"));
+      document.querySelector("#h1").innerHTML = "ADFLS";
+      y = 1;
+      z = 0;
+    } else if (z == 0) { // endrer fra audio til video
+        document.querySelector("#swtch").innerHTML = "AUDIO FILES &#8634;";
+        document.querySelector("#swtch").title = "Switch to audio files";
+        document.querySelector("#chng").innerHTML = "CHANGE VIDEO &#8634;";
+        document.querySelector("#chng").title = "Switch between the different video files";
+        document.querySelector("#chng").setAttribute("onclick", "change()");
+        document.querySelector("#main").removeChild(document.querySelector("#main").firstElementChild);
+        var aud1 = document.createElement("video");
+        aud1.src = "original.mp4";
+        aud1.id = "vid";
+        aud1.width = "800";
+        aud1.height = "475";
+        aud1.autoplay = "autoplay";
+        document.querySelector("#main").insertBefore(aud1, document.querySelector("#subt"));
+        document.querySelector("#h1").innerHTML = "VDFLS";
+        x = 0;
+        y = 0;
+        z = 1;
+    }
+
+  }
+  function chngaud() { //bytter fra første audiofilen til den andre og tilbake
+    if (y == 1) {
+      document.querySelector("#aud").setAttribute("src", "newfile.mp3");
+      y = 0;
+      document.querySelector("#subt").innerHTML = "Edited";
+    } else {
+      document.querySelector("#aud").setAttribute("src", "original.mp3");
+      y = 1;
+      document.querySelector("#subt").innerHTML = "Original";
+    }
+
+  }
+  </script>
+</body>
+</html>

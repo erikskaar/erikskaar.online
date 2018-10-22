@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+}
+#header {
+  text-align: center;
+}
+#main {
+  display: flex; /*bare litt enkel styling for å få det til å se litt bedre ut */
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.submain {
+  margin: auto;
+  width: 33%;
+  text-align: center;
+}

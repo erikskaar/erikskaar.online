@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="cur.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="header">
+    <h1>Cørling</h1>
+    <p>Timer:<span id="timer">0.00</span> </p>
+  </div>
+  <canvas id="myCanvas" onmousemove="cur(event)">
+    <img id="stone" src="stone.jpg" alt="">
+  </canvas>
+
+<script type="text/javascript">
+document.getElementById('myCanvas').style.cursor = "url('broom.png'), auto"; //endrer cursor til en kost
+var img = document.getElementById('stone'); //legger til bildet av steinen i js
+var c=document.getElementById("myCanvas"); //lager canvaset
+var ctx=c.getContext("2d");
+var hw = 200; //heightwidth
+var xp = 0;  //x-pos
+ctx.canvas.width  = window.innerWidth; //canvasbredden er samme som browserbredden
+ctx.canvas.height = window.innerHeight- 200; //canvashøyden er samme som browserhøyden - 200px for å gjøre plass til header
+ctx.fillStyle="#FFFFFF";
+ctx.fillRect(xp, ctx.canvas.height/2-hw/2,ctx.canvas.width,hw)
+ctx.drawImage(stone,xp,ctx.canvas.height/2-hw/2,hw,hw); // tegner første steinen, setter den på x-pos = 20 og canvashøyden delt på 2 - halvparten av høyden til steinen. lager den 200*200px
+
+ function cur(event) { //funksjon som styrer musetracking
+  var x = event.clientX; //setter x-pos av musa
+  var y = event.clientY; //setter y-pos av musa
+  //console.log(y);        //logger y-pos
+  //console.log(ctx.canvas.height/2+hw/2 + " bot"); //sjekker koordinater for bunnen av bildet.
+  //console.log(ctx.canvas.height/2-hw/2 + " top"); // sjekker koordinater for toppen av bildet.
+  if (y <=ctx.canvas.height-500/2+hw/2 && y>=ctx.canvas.height-500/2-hw/2 && xp<=ctx.canvas.width && x>=xp+hw && x<=xp+400) {
+    xp+=1;                                                                       //hvis musa er på samme høyde som steinen og til høyre for den innen 400px så tegnes steinen videre til høyre. Den kan ikke være 400px unna siden da vil det ikke registreres.
+    //console.log(xp +" xp")
+    ctx.drawImage(stone,xp,ctx.canvas.height/2-hw/2,hw,hw)
+  }
+}
+var seconds = 0;
+var timer = setInterval(function() { //lager en timer som logger hvor lang tid steinen bruker på å komme seg over skjermen
+   seconds++;
+   document.getElementById('timer').innerHTML= seconds;
+   //console.log(xp);
+   if (xp>=ctx.canvas.width-210) { //hvis steinen når innen 10px av enden på skjermen så stopper timeren.
+     clearInterval(timer);
+   }
+}, 10);
+</script>
+
+
+</body>
+</html>

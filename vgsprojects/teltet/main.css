@@ -1,0 +1,127 @@
+body {
+  margin: 0;
+  text-align: center;
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+#main {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+.flex {
+  display: flex;
+  background-color: red;
+  width: 1000px;
+  height: 500px;
+  margin: auto;
+  flex-wrap: nowrap;
+}
+#first {
+  background-color: blue;
+  margin-top: 4em;
+}
+.anlegg {
+  position: relative;
+  width: 120px;
+  height: 60px;
+  background-color: green;
+  margin-top: 60px;
+
+}
+#erste {
+  margin-left: 50px;
+}
+.scene {
+  height: 120px;
+  width: 200px;
+  background-color: brown;
+}
+#lounge {
+  width: 400px;
+  height: 500px;
+  background-color: grey;
+  margin-left: auto;
+}
+.beerpong {
+  width: 250px;
+  height: 100px;
+  background-color: pink;
+  position: relative;
+  margin: auto;
+  left: 250px;
+}
+#beer_2 {
+  left: 0px;
+  left: 250px;
+}
+#inngang {
+  width: 25px;
+  height: 100px;
+  background-color: purple;
+  position: relative;
+  left: 975px;
+  top: 0px;
+}
+.sofa {
+  width: 250px;
+  height: 70px;
+  background-color: purple;
+  position: relative;
+}
+.stol {
+  width: 70px;
+  height: 70px;
+  background-color: purple;
+  position: relative;
+}
+#stol1 {
+  left: 160px;
+  top: -70px;
+}
+#stol2 {
+  top: 90px;
+  left: 80px;
+  transform: rotate(-90deg);
+}
+#sof1_0 {
+  left: 240px;
+  top: -120px;
+  transform: rotate(90deg);
+}
+#sof1_1 {
+  left: 260px;
+  top: -140px;
+  width: 70px;
+  transform: rotate(90deg);
+}
+#sof2_0 {
+  left: 80px;
+  top: -100px;
+}
+#sof2_1 {
+  width: 70px;
+  top: -100px;
+  left: 80px;
+}
+#rave {
+  position: relative;
+  width: 480px;
+  height: 250px;
+  background-color: yellow;
+  top: 200px;
+  left: -200px;
+}
+#t2 {
+  flex-direction: column;
+}
+.strip {
+  background-color: brown;
+  height: 50px;
+  width: 50px;
+  position: relative;
+  top: 250px;
+  left: -250px;
+}

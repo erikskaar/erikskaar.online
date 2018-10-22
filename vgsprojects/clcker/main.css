@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  color: white;
+}
+#header {
+  height: 10vh;
+  width: 100vw;
+  text-transform: uppercase;
+  text-align: center;
+  position: sticky;
+}
+#header h1 {
+  margin: auto;
+  color: #333;
+}
+#main {
+  width: 100vw;
+  height: 90vh;
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+}
+#kbdiv {
+  width: 100%;
+  display: flex;
+}
+#kbimg {
+  margin: auto;
+}
+#cntdiv {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  padding-top: 5vh;
+  flex-wrap: wrap;
+}
+#cntdiv p {
+  margin: auto;
+  font-size: 3em;
+  color: white;
+  width: 50%;
+}
+#buydiv {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 30vh;
+}
+.buyitem {
+  width: 10%;
+  margin-left: 5em;
+  margin-right: 5em;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.buyitem img {
+  width: 100%;
+  margin: auto;
+  height: 50%;
+}
+
+#footer {
+  text-align: center;
+  width: 100%;
+  height: 10vh;
+  color: #333;
+}

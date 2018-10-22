@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="pn.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="header">
+  <p id="p1">Insert phone number:</p>
+  <input type="text" name="" value="1" id="input">
+  </div>
+<div class="main">
+  <p id="n0">1</p>
+  <p id="n1">2</p>
+  <p id="n2">3</p>
+  <p id="n3">5</p>
+  <p id="n4">7</p>
+  <p id="n5">11</p>
+  <p id="n6">13</p>
+  <p id="n7">17</p>
+  <p id="n8">23</p>
+</div>
+<script type="text/javascript">
+  var n = ["n","n","n","n","n","n","n","n","n"];
+  for (var i = 0; i < n.length; i++) {
+    n[i] = "n" + i;
+    console.log(n[i]);
+  }
+  $("#"+n[i]).click(function(){
+    console.log(n[i] + "was clicked")
+});
+</script>
+<script type="text/javascript">
+$(".main").children().click(function(){
+  var n = ["n","n","n","n","n","n","n","n","n"];
+});
+</script>
+<script type="text/javascript">
+
+  $(".main").children().click(function(){
+    x = this.id;
+    y = (this.innerHTML);
+    console.log(x + " " +y);
+
+    document.getElementById("input").value = document.getElementById("input").value*y;
+  });
+
+</script>
+</body>
+</html>
+<!--En stemme på Emil er en stemme på folket. Emil setter V-en tilbake i Vorskerklassen. Slipp Jesus inn i ditt hjerte, slipp Emil i ditt styre, det her blir en jævla syre! -->

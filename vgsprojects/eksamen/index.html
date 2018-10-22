@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="main.css">
+  <title>Document</title>
+</head>
+<body>
+  <div id="header">
+    <h1>Ringve Museum</h1>
+    <div id="icons">
+        <img value="0" id="aabtn" class="icons" src="aapningstider.jpg" alt="">
+        <div class="dropdown" id="aapningstider">
+          <h3>Åpningstider</h3>
+          <p>Tirsdag - Søndag: 11:00-16:00</p>
+        </div>
+        <img id="prbtn" class="icons" src="priser.jpg" alt="">
+        <div class="dropdown" id="priser">
+          <h3>Billetter</h3>
+          <p>Voksen: 120kr <br>Student/Honnør: 100kr <br>Barn(0-15 år): Gratis</p>
+        </div>
+        <img id="ibtn" class="icons" src="informasjon.jpg" alt="">
+        <div class="dropdown" id="info">
+          <h3>Informasjon</h3>
+          <p>Besøksadresse: <br>Lade allé 60, 7041 Trondheim</p>
+          <p>73 87 02 80 post@ringve.no</p>
+          <p>Postadresse: <br>Postboks 6289 Torgarden, 7489 Trondheim</p>
+        </div>
+    </div>
+  </div>
+  <div id="opening">
+    <div id="nxtbtn">
+      <button type="button" onclick="nxtimg(-1)" name="button"><</button>
+      <button type="button" onclick="nxtimg(1)" name="button">></button>
+    </div>
+    <div id="opbtn">
+      <a href="#main">Arrangementer</a>
+      <a href="#larger">Instrumentquiz</a>
+    </div>
+  </div>
+  <div id="main">
+    <div class="outerflex">
+      <div class="flex">
+        <h3>Trondheim kammermusikkfestival: Fabelaktig formiddag</h3>
+        <p><b>Tidspunkt:</b> <br> 1. juni 11:00</p>
+        <p>Dette er barnas og familiens festivaldag. Én billett gjelder for alt, og du kan velge mellom en rekke ulike forestillinger.</p>
+        <button type="button" name="button" onclick="bestill(0)">Bestill billetter</button>
+      </div>
+      <div class="flex">
+        <h3>Spill opp!</h3>
+        <p><b>Tidspunkt:</b> <br> 4. juni 14:30</p>
+        <p>Mastereksamen NTNU fløyte v/Matthias Lauga</p>
+        <button type="button" name="button" onclick="bestill(1)">Bestill billetter</button>
+      </div>
+      <div class="flex">
+        <h3>Onsdagskonsert</h3>
+        <p><b>Tidspunkt:</b> <br> 6. juni 13:00</p>
+        <p>Barokke treblåserensembler</p>
+        <button type="button" name="button" onclick="bestill(2)">Bestill billetter</button>
+      </div>
+      <div class="flex">
+        <h3>Juiogat: Joik for folk</h3>
+        <p><b>Tidspunkt:</b> <br> 9.juni 14:00</p>
+        <p>En vandring i samisk musikkhistorie ved Lena Jansen</p>
+        <button type="button" name="button" onclick="bestill(3)">Bestill billetter</button>
+      </div>
+    </div>
+
+    <div id="bestboks" class="largeflex">
+      <h2 id="overskrift"></h2>
+      <div id="antb">
+        <div id="" class="ant">
+          <p>Antall <br> barn:</p>
+          <select id="barn" class="" name="">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+      <div id="" class="ant">
+        <p>Antall voksne:</p>
+        <select id="voksen" class="" name="">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <div id="bpris" class="ant">
+        <p>Total pris: <span id="tpris">0</span>kr</p>
+
+        <button type="button" name="button" onclick="utskrift()">Bestill</button>
+      </div>
+
+      </div>
+
+    </div>
+    <div id="larger" class="largeflex">
+      <h2>Instrumentquiz</h2>
+      <div id="quiz">
+
+      </div>
+      <button type="button" name="button" onclick="generer()">Spill lyd</button>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+  <div id="footer">
+
+  </div>
+</body>
+<script type="text/javascript">
+
+////////////////////////////////////
+///Oppgave 1///////////////////////
+/////////////////////////////////
+
+//Dette er ikke den mest elegante løsningen, men jeg har ikke tid til å gjøre den bedre
+//dropdownene til ikonene på toppen
+  document.querySelector("#aabtn").addEventListener("mouseover", aavis);
+  document.querySelector("#aabtn").addEventListener("mouseout", aaskjul);
+  function aavis() {
+    document.querySelector("#aapningstider").style.display = "block";
+  }
+  function aaskjul() {
+    document.querySelector("#aapningstider").style.display = "none";
+  }
+  document.querySelector("#prbtn").addEventListener("mouseover", prvis);
+  document.querySelector("#prbtn").addEventListener("mouseout", prskjul);
+  function prvis() {
+    document.querySelector("#priser").style.display = "block";
+  }
+  function prskjul() {
+    document.querySelector("#priser").style.display = "none";
+  }
+  document.querySelector("#ibtn").addEventListener("mouseover", ivis);
+  document.querySelector("#ibtn").addEventListener("mouseout", iskjul);
+  function ivis() {
+    document.querySelector("#info").style.display = "block";
+  }
+  function iskjul() {
+    document.querySelector("#info").style.display = "none";
+  }
+
+
+  var b = 0;
+  var imgarray = ["intro1.jpg", "intro2.jpg", "intro3.jpg", "intro4.jpg"];
+  function nxtimg(x) {
+    b += x;
+    console.log(b);
+    if (b>=4) { //lager en loop så den ikke går tom for bilder
+      b = 0;
+    } else if (b<0) {
+      b = 3;
+    }
+    document.querySelector("#opening").style.backgroundImage = "url("+imgarray[b]+")"; //setter bakgrunnen
+  }
+
+
+</script>
+
+
+<script type="text/javascript">
+//////////////////////////////
+//////Oppgave 2/////////////
+//////////////////////////
+  var int = setInterval(pris, 100);
+  var arrnr = ["Trondheim kammermusikkfestival: Fabelaktig formiddag", "Spill opp!", "Onsdagskonsert", "Juiogat: Joik for folk"];
+  var exttype = 0;
+  document.querySelector("#overskrift").innerHTML = arrnr[0];
+  function bestill(type) {
+    document.querySelector("#bestboks").removeChild(document.querySelector("#overskrift")); //endrer overskriften basert på hvilken man velger
+    var nyh2 = document.createElement("h2");
+    nyh2.innerHTML = arrnr[type];
+    nyh2.id = "overskrift"
+    document.querySelector("#bestboks").insertBefore(nyh2, document.querySelector("#antb"));
+    exttype = type;
+  }
+  var tpris = 0;
+  var antpers = 0;
+  var antbarn = 0;
+  var antvoks = 0;
+  var x = 0;
+  function pris() {
+
+    antbarn = parseInt(document.querySelector("#barn").value);
+    antvoks =  parseInt(document.querySelector("#voksen").value);
+    antpers = antbarn + antvoks; //antall personer
+    console.log(antpers);
+
+    if (antpers >= 5) {
+      tpris = antvoks*100 + antbarn*50 //total pris
+      tpris = tpris - tpris/5; //fjerner 20%
+    } else {
+      tpris = antvoks*100 + antbarn*50
+    }
+    document.querySelector("#tpris").innerHTML = tpris ; //gjør om tallet til prisen
+    x = antpers;
+  }
+  var kvittering = 0;
+  function utskrift() {
+    if (antpers>0 && antpers<5) {
+      kvittering = "Du har bestilt " + antpers + " billetter til " + arrnr[exttype] + ". Totalprisen er "+ tpris +"kr."
+
+    } else if (antpers>0 && antpers>=5) {
+      kvittering = "Du har bestilt " + antpers + " billetter til " + arrnr[exttype] + ". Totalprisen er "+ tpris +"kr inklusiv 20% avslag i grupperabatt.";
+    }
+    else {
+      kvittering = "Du har bestilt for få billetter.";
+    }
+    if (antbarn>0) {
+    kvittering += " Antall barn: " + antbarn+".";
+    }
+    if (antvoks>0) {
+      kvittering += " Antall voksne: " + antvoks+".";
+    }
+    alert(kvittering);
+  }
+
+</script>
+
+<script type="text/javascript">
+/////////////////////////////////
+////////Oppgave 3///////////////
+///////////////////////////////
+
+//Her lages elementene
+  var navn = ["fagott", "fløyte", "klarinett", "obo", "valthorn"];
+  var sources = ["fagott.jpg", "floyte.gif", "klarinett.jpg", "obo.jpg", "valthorn.jpg"];
+  for (var i = 0; i < 5; i++) {
+    var newDiv = document.createElement("div");
+    newDiv.className = "instrument";
+    var instr = document.createElement("img"); //lager bildet
+    instr.src = sources[i];
+    instr.addEventListener("click", function() {
+      if (i = tall) {           //////////Her blir ikke i lagret, så i er alltid 5 :/ Dette kan muligens fikses med objekter
+        riktig.play();
+      } else {
+        feil.play();
+      }
+    });
+    var newP = document.createElement("p"); //lager teksten under bildet
+    newP.innerHTML = navn[i];
+    newDiv.appendChild(instr)
+    newDiv.appendChild(newP);
+    document.querySelector("#quiz").appendChild(newDiv);
+  }
+
+  ////Setter opp kildene
+  var riktig = new Audio("riktig.mp3");
+  var feil = new Audio("feil.mp3");
+  var tall = 0;
+  var lyd = [];
+  var audiosrc = ["fagott.mp3", "floyte.mp3", "klarinett.mp3", "obo.mp3", "valthorn.mp3"];
+  var fagott = new Audio(audiosrc[0]);
+  var floyte = new Audio(audiosrc[1]);
+  var klarinett = new Audio(audiosrc[2]);
+  var obo = new Audio(audiosrc[3]);
+  var valthorn = new Audio(audiosrc[4]);
+  var instrumenter = [fagott, floyte, klarinett, obo, valthorn];
+  //Knappen som generer tallene
+  function generer() {
+    tall = Math.floor(Math.random() * audiosrc.length);
+    console.log(tall);
+    instrumenter[tall].play()
+  }
+
+//Funksjonen som sjekker tallene man klikker på opp mot tallet som knappen generer.
+  function sjekk(q) {
+    console.log(q);
+  }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="main.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="header">
+    <h1>PRIMTALL</h1>
+  </div>
+  <div class="main">
+    <div class="flex">
+        <input type="text" name="" value="" id="inp" oninput="calcu()" maxlength="8">
+    </div>
+    <div class="flex">
+      <p id="outp"></p>
+    </div>
+
+  </div>
+</body>
+<script type="text/javascript">
+  function calcu() {
+    document.querySelector("#outp").innerHTML= "";
+    var inp = document.querySelector("#inp").value
+    for (var i = 2; i < inp; i++) {
+      if (inp%i==0) {
+        document.querySelector("#outp").innerHTML += i + ", ";
+        inp = inp/i;
+        i = 2;
+      }
+    }
+    document.querySelector("#outp").innerHTML += inp;
+    if (document.querySelector("#outp").innerHTML == inp) {
+      document.querySelector("#outp").innerHTML = "primtall";
+    } else if (inp == "") {
+      document.querySelector("#outp").innerHTML = "";
+    }
+  }
+</script>
+</html>

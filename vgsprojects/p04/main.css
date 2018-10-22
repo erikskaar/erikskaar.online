@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  background-color: #7EC0EE;
+  overflow-x: hidden;
+  animation: color 10s infinite 2.5s linear;
+}
+@keyframes color {
+    0% {background-color: #7EC0EE;}
+    50% {background-color: #350089;}
+    100% {background-color: #7EC0EE;}
+}
+#header {
+  width: 100%;
+  background-color: red;
+  height: 3vh;
+  margin: 0;
+}
+#header p {
+  margin: 0;
+  padding: 0;
+}
+#main {
+  width: 70%;
+  min-width: 70%;
+  height: 97vh;
+  background-image: url("ground2.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-left: 15vw solid grey;
+  border-right: 15vw solid grey;
+  overflow: hidden;
+}
+#banner {
+  word-break: keep-all;
+  word-wrap: normal;
+  white-space: nowrap;
+  color: white;
+}
+#ground {
+  width: 100%;
+  position: relative;
+  height: 97vh;
+}
+.mill, .car {
+  width: 100%;
+  position: relative;
+}
+.mill {
+  left: 30%;
+  top: -70%;
+}
+.car {
+  top: 30%;
+  left: 2%;
+  animation: cer 2s infinite linear;
+}
+@keyframes cer {
+  0% {left: 100%;}
+  100% {left: -36%;}
+}
+#stolpe {
+  width: 30%;
+  left: 25%;
+  top: 45%;
+  position: absolute;
+}
+@keyframes spin {
+  0% { transform: rotate(1440deg); }
+  100% { transform: rotate(0deg); }
+}
+#rotor {
+  width: 30%;
+  animation: spin 0s linear 0s infinite normal;
+  left: 25.1%;
+  position: relative;
+}
+#bil {
+  width: 40%;
+}
+.rims {
+  width: 6%;
+  position: absolute;
+  animation: spin 2s linear 0s infinite normal;
+}
+#rim1 {
+  left: 6.53%;
+  top: 49.4%;
+}
+#rim2 {
+  left: 26.3%;
+  top: 48.8%;
+}
+.h2 {
+  color: white;
+}
+#sun {
+  width: 10%;
+  position: relative;
+  left: 50%;
+  top: 60vh;
+  transform: scale();
+  animation: rot 10s infinite linear;
+  z-index: -1;
+}
+@keyframes rot { /* rotasjon */
+	from {
+		transform: rotate(0deg)
+		           translate(-500px)
+		           rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg)
+		           translate(-500px)
+		           rotate(-360deg);
+	}
+}

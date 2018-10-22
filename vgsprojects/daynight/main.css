@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  background-color: #7EC0EE;
+  animation: color 10s infinite 2.5s linear;
+  overflow: hidden;
+}
+@keyframes color {
+    0% {background-color: #7EC0EE;}
+    50% {background-color: #350089;}
+    100% {background-color: #7EC0EE;}
+}
+#sun {
+  width: 10vw;
+  animation: rot 10s infinite linear;
+  position: absolute;
+  left: 45vw;
+  top: 45vw;
+}
+@keyframes rot {
+	from {
+		transform: rotate(0deg)
+		           translate(-500px)
+		           rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg)
+		           translate(-500px)
+		           rotate(-360deg);
+	}
+}

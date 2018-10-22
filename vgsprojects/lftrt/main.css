@@ -1,0 +1,11 @@
+body {
+  display: flex;
+}
+#box {
+  background-color: orange;
+  margin: auto;
+  width: 25%;
+  height: 10em;
+  position:absolute;
+  left: 37.5%;
+}

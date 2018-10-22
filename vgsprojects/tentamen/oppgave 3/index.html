@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="main.css">
+  <title>Oppgave 3</title>
+</head>
+<body>
+  <div id="header">
+    <h1>Oppgave 3</h1>
+    <p>Pris: <span id="pris">0</span>kr</p>
+  </div>
+  <div id="main">
+    <div class="submain" id="destvalg">
+      <p>Destinasjon</p>
+      <select id="destinasjon" name=""> <!-- html-en er ikke spennende, bare mange select og option elementer med  forskjellige verdier -->
+        <option value="nyc">New York</option>
+        <option value="stbt">St. Petersburg</option>
+        <option value="roma">Roma</option>
+        <option value="amsterdam">Amsterdam</option>
+      </select>
+
+    </div>
+    <div class="submain" id="pervalg">
+      <p>Reiseperiode:</p>
+      <select id="reiseperiode" name="">
+        <option value="sommer">Sommer</option>
+        <option value="vinter">Vinter</option>
+      </select>
+    </div>
+    <div class="submain" id="dvalg">
+      <p>Antall dobbeltrom:</p>
+      <select id="dobbeltrom" name="">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+    <div class="submain" id="evalg">
+      <p>Antall enkeltrom:</p>
+      <select id="enkeltrom" name="">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+    <div class="submain" id="hotellvalg">
+      <p>Hotell:</p>
+      <select id="hotell" name="">
+        <option value="0">Aurora</option>
+        <option value="1">Downtown</option>
+        <option value="2">City Hall</option>
+        <option value="3">Wilmont</option>
+        <option value="4">Chelsea Inn</option>
+      </select>
+    </div>
+    <div class="submain" id="kultvalg">
+      <p>Kulturpass:</p>
+      <select id="kulturpass" name="">
+        <option value="ja">Ja - 700kr</option>
+        <option value="nei">Nei</option>
+      </select>
+    </div>
+    <div class="submain">
+      <p>Pris per dobbeltrom: <span id="dpris">0</span>kr</p>
+      <p>Pris per enkeltrom: <span id="epris">0</span>kr</p>
+      <button type="submit" id="sub1" name="button">Submit</button>
+    </div>
+
+  </div>
+</body>
+<script type="text/javascript">
+var int = setInterval(change, 25); // gjør at funksjonen change oppdateres hvert 25 millisekund
+var destinasjon = 0;
+var pris = 0;
+  document.querySelector("#sub1").addEventListener("click", valg);
+  function valg() {
+    if (document.querySelector("#destinasjon").value == "nyc") { //dersom du velger new york går d gjennom, dersom du ikke gjør det må du velge en annen by.
+      alert("Takk for ditt kjøp!");
+    } else {
+      alert("Denne byen er ikke klar enda, vennligst velg en annen.");
+    }
+  }
+ var aurora = { // lager objekter av hotellene for å lett holde styr på de forskjellige prisene
+   spris: 590,
+   vpris: 690
+ };
+ var downtown = {
+   spris:  660,
+   vpris:  750
+ };
+ var cityhall = {
+   spris:  450,
+   vpris:  530
+ };
+ var wilmont = {
+   spris:  660,
+   vpris:  880
+ };
+ var chelseainn = {
+   spris:  450,
+   vpris:  560
+ };
+
+var hoteller = [aurora, downtown, cityhall, wilmont, chelseainn]; // en array for å kunne velge hotellene ved bruk av valuen fra rullegardinen i html
+
+
+
+ function change() { //funksjonen som oppdaterer prisen
+    document.querySelector("#pris").innerHTML = pris; //kobler variablene til DOM-elementene
+    document.querySelector("#dpris").innerHTML = dpris
+    document.querySelector("#epris").innerHTML = epris
+    if (document.querySelector("#reiseperiode").value == "sommer") { //redegjør for om det er sommer eller vinterpriser
+       pris = hoteller[document.querySelector("#hotell").value].spris * document.querySelector("#dobbeltrom").value + (hoteller[document.querySelector("#hotell").value].spris + 300) * document.querySelector("#enkeltrom").value; // regner ut kostnaden som sommerpris * antall dobbeltrom + antall enkeltrom * (sommerpris + 300)
+       dpris = hoteller[document.querySelector("#hotell").value].spris //pris per dobbeltrom
+       epris = hoteller[document.querySelector("#hotell").value].spris + 300; // pris per enkeltrom
+     } else {
+       pris = hoteller[document.querySelector("#hotell").value].vpris * document.querySelector("#dobbeltrom").value + (hoteller[document.querySelector("#hotell").value].spris + 300) * document.querySelector("#enkeltrom").value; // samme som den andre, men for vinterpris istedet
+       dpris = hoteller[document.querySelector("#hotell").value].vpris // samme bare vinterpris
+       epris = hoteller[document.querySelector("#hotell").value].vpris + 300;
+     }
+
+     if (document.querySelector("#kulturpass").value == "ja") { // dersom man takker ja til kulturpass er prisen = prisen + 700
+       pris += 700;
+     }
+
+ }
+</script>
+</html>

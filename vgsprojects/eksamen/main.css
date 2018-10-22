@@ -1,0 +1,180 @@
+body {
+  margin: 0;
+}
+#header {
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #EEE;
+  color: #333;
+  height: 10vh;
+  display: flex;
+  position: fixed;
+  border-bottom: 1px solid #333;
+}
+#header h1 {
+  margin: 0;
+  padding: 0.5em;
+}
+#icons {
+  margin: auto;
+  height: 10vh;
+  display: flex;
+  width: 25%;
+}
+#icons img {
+  height: 100%;
+  margin: auto;
+  transition: 0.5s;
+}
+#icons img:hover {
+  filter: brightness(0.5);
+  transition: 0.5s;
+}
+.dropdown {
+  background-color: #EEE;
+  margin-top: 10vh;
+  position: absolute;
+  width: 25%;
+  height: 60vh;
+  display: none;
+  border-bottom: 1px solid #333;
+  border-left: 1px solid #333;
+  border-right: 1px solid #333;
+}
+#opening {
+  width: 100%;
+  height: 90vh;
+  background-color: black;
+  background-image: url("intro1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  padding-top: 10vh;
+  margin: auto;
+  justify-content: center;
+  flex-direction: column;
+}
+#nxtbtn {
+width: 100%;
+margin: auto;
+justify-content: center;
+display: flex;
+}
+#nxtbtn button {
+  margin: auto;
+  background-color: none;
+  color: black;
+  border: none;
+  padding: 1em;
+  font-size: 1em;
+  border-radius: 100px;
+  transition: 0.1s;
+}
+#nxtbtn button:hover {
+  filter: brightness(0.5);
+  transition: 0.1s;
+}
+#opbtn {
+  display: flex;
+  text-align: center;
+  width: 100%;
+}
+#opbtn a {
+  color: white;
+  background-color: none;
+  border: 0.1em solid white;
+  text-decoration-line: none;
+  text-transform: uppercase;
+  margin: auto;
+  padding: 1em;
+  margin-bottom: 1em;
+  transition: 1s;
+}
+#opbtn a:hover {
+  color: black;
+  border: 0.1em solid transparent;
+  background-color: white;
+}
+#main {
+  width: 100%;
+  display: flex;
+  margin-bottom: 2em;
+  flex-direction: column;
+}
+.flex {
+  min-width: 20%;
+  max-width: 20%;
+  background-color: #EEE;
+  height: 60vh;
+  margin: auto;
+  text-align: center;
+  text-transform: none;
+  color: #333;
+}
+.flex button {
+  padding: 1em;
+}
+.flex p {
+  padding-left: 2em;
+  padding-right: 2em;
+}
+.outerflex {
+  min-width: 100%;
+  display: flex;
+  margin-top: 1em;
+}
+.largeflex {
+  min-width: 60%;
+  max-width: 60%;
+  background-color: #EEE;
+  margin: auto;
+  height: 60vh;
+  text-align: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: #333;
+  display: flex;
+  margin-top: 1em;
+  flex-direction: column;
+}
+.largeflex h2 {
+  margin: auto;
+}
+#larger {
+  min-width: 100%;
+  max-width: 100%;
+  height: 90vh;
+  flex-direction: column;
+}
+#larger button {
+  width: 5em;
+  margin: auto;
+  margin-bottom: 5em;
+  padding: 1em;
+}
+select {
+  height: 2em;
+  width: 5em;
+}
+#antb {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+.ant {
+  width: 30%;
+}
+
+.instrument {
+  width: 33%;
+  margin: auto;
+}
+#quiz {
+  display: flex;
+  flex-direction: row;
+  height: 90%;
+
+}

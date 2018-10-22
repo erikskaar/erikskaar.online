@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+}
+#main {
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+  flex-wrap: wrap;
+}
+#header {
+  height: 20vh;
+}
