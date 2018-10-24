@@ -11,15 +11,13 @@ function expandOnHover() {
         document.querySelector("#" +this.id).style.width = hoverWidth;
         document.querySelector("#" +this.id).children[1].style.visibility = "visible";
         console.log(this.id);
-    } else {
-
     }
 }
 for (i=0;i<document.querySelector("#jumbotron").children.length;i++) {
     //console.log( document.querySelector("#jumbotron").children[i]);
     document.querySelector("#jumbotron").children[i].addEventListener("mouseover", expandOnHover);
     document.querySelector("#jumbotron").children[i].addEventListener("click", expandOnClick);
-    document.querySelector("#jumbotron").children[i].addEventListener("mouseout", resetToDefault);
+    document.querySelector("#jumbotron").addEventListener("mouseleave", resetToDefault);
 
 }
 function shrinkAllChildrenOfParent(dontshrink, siblingwidth) {
@@ -29,19 +27,20 @@ function shrinkAllChildrenOfParent(dontshrink, siblingwidth) {
     }
 }
 function resetToDefault() {
-    if (isClicked==0) {
         shrinkAllChildrenOfParent(this, defaultWidth);
-    }
-    
+        isClicked = 0;
 }
+
 function expandOnClick() {
     if (isClicked == 0) {
         shrinkAllChildrenOfParent(this, siblingsClickWidth);
         document.querySelector("#" +this.id).style.width = clickWidth;
         isClicked=1;
+        //console.log("expanded");
     } else {
-        expandOnHover();
+        resetToDefault();
         isClicked=0;
+        //console.log("default");
     }
 }
 
