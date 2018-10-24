@@ -29,7 +29,10 @@ function shrinkAllChildrenOfParent(dontshrink, siblingwidth) {
     }
 }
 function resetToDefault() {
-    shrinkAllChildrenOfParent(this, defaultWidth);
+    if (isClicked=0) {
+        shrinkAllChildrenOfParent(this, defaultWidth);
+    }
+    
 }
 function expandOnClick() {
     if (isClicked == 0) {
