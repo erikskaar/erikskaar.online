@@ -29,7 +29,7 @@ function shrinkAllChildrenOfParent(dontshrink, siblingwidth) {
     }
 }
 function resetToDefault() {
-    if (isClicked=0) {
+    if (isClicked==0) {
         shrinkAllChildrenOfParent(this, defaultWidth);
     }
     
