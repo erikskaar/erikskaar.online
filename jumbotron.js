@@ -40,7 +40,7 @@ function expandOnClick() {
         document.querySelector("#" +this.id).style.width = clickWidth;
         isClicked=1;
     } else {
-        resetToDefault();
+        expandOnHover();
         isClicked=0;
     }
 }
