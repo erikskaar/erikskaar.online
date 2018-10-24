@@ -19,6 +19,7 @@ for (i=0;i<document.querySelector("#jumbotron").children.length;i++) {
     //console.log( document.querySelector("#jumbotron").children[i]);
     document.querySelector("#jumbotron").children[i].addEventListener("mouseover", expandOnHover);
     document.querySelector("#jumbotron").children[i].addEventListener("click", expandOnClick);
+    document.querySelector("#jumbotron").children[i].addEventListener("mouseout", resetToDefault);
 
 }
 function shrinkAllChildrenOfParent(dontshrink, siblingwidth) {
