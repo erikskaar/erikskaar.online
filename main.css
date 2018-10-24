@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    background-color: grey;
+    font-family: 'Poiret One';
+    overflow-x: hidden;
+    background-color: darkgreen;
+}
+
+footer {
+    color: white;
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+    height: 20vh;
+    background-color: darkred;
+    display: flex;
+    flex-direction: row;
+}
+#footerTag {
+    padding: auto;
+    padding-top: 10vh;
+    width: 25%;
+    color: white;
+    text-decoration: none;
+    background-color: darkorange;
+}
+#footerLinks {
+    width: 75%;
+    display: flex;
+    height: 20vh;
+}
+#footerLinks a {
+    padding: auto;
+    padding-top: 10vh;
+    color: white;
+    text-decoration: none;
+    width: calc(100%/3);
+}
+
+
+/*JUMBOTRON TAIM */
+#jumbotron {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.section {
+    width: 25%; 
+    height: 100vh;
+    box-sizing: border-box;
+    border-collapse: collapse;
+    transition: 0.5s ease-in-out;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+.section:hover {
+    cursor: pointer;
+}
+.section p {
+    font-size: 2em;
+    visibility: hidden;
+    padding: 1em;
+    white-space: nowrap;
+    color: white;
+}
+.section h1 {
+    color:white;
+    font-size: 16em;
+}
+#bio {
+    background-color: hotpink;
+}
+#projects {
+    background-color: blueviolet;
+}
+#contact-info {
+    background-color: chartreuse;
+}
+#bullshit {
+    background-color: darkgreen;
+}
