@@ -4,10 +4,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
-    <div id="header">Scrap Simulator</div>
-    
+    <div id="header">
+        <h1>Zerg Simulator v0.1</h1>
+    </div>
+    <div id="container">
+        <div class="mainTabs">
+            <div class="underTabs">
+                    <div class="content">
+                            <h2>Units</h2>
+                            <div class="clickable">
+                                <div class="underClick">
+                                        <h4>Drone</h4>
+                                        <button onclick="addUnit(drones,1)">Hatch 1 <br>Cost: 100 Minerals</button>
+                                        <button>Hatch Medium</button>
+                                        <button>Hatch Max</button>
+                                </div>
+                                <div class="underClick">
+                                        <h4>Queen</h4>
+                                        <button onclick="addUnit(queens,1)">Hatch 1 <br>Cost: 20 Drones</button>
+                                        <button>Hatch Medium</button>
+                                        <button>Hatch Max</button>
+                                </div>
+                                <div class="underClick">
+                                        <h4>Roach</h4>
+                                        <button onclick="addUnit(roaches,1)">Hatch 1 <br>Cost: 2 Queens</button>
+                                        <button>Hatch Medium</button>
+                                        <button>Hatch Max</button>
+                                </div>
+                                <div class="underClick">
+                                        <h4>Hydra</h4>
+                                        <button onclick="addUnit(hydras,1)">Hatch 1 <br>Cost: 6 Roaches</button>
+                                        <button>Hatch Medium</button>
+                                        <button>Hatch Max</button>
+                                </div>
+                                
+                            </div>
+                    </div>
+            </div>
+            <div class="underTabs">
+                <div class="content">
+                    <h2>Production</h2>
+                    <div class="clickable">
+                        <button>Hatchery</button>
+                        <button>Lair</button>
+                        <button>Hive</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="mainTabs">
+            <div class="underTabs">
+                <div class="content">
+                    <h2>Stats</h2>
+                    <div id="stats">
+                        <div class="currentNum" onclick="manuallyMine()">
+                                <p>Minerals <br> (click to mine)</p>
+                                <p id="minerals">200</p>
+                        </div>
+                        <div class="currentNum">
+                                <p>Vespene Gas</p>
+                                <p id="gas">0</p>
+                        </div>
+                        <div class="currentNum">
+                                <p>Drones</p>
+                                <p id="drones">1</p>
+                        </div>
+                        <div class="currentNum">
+                                <p>Queens</p>
+                                <p id="queens">0</p>
+                        </div>
+                        <div class="currentNum">
+                                <p>Roaches</p>
+                                <p id="roaches">0</p>
+                        </div>
+                        <div class="currentNum">
+                                <p>Hydras</p>
+                                <p id="hydras">0</p>
+                        </div>
+                        <div class="currentNum">
+                                <p>Territory</p>
+                                <p>0</p>
+                        </div>
+                        <div class="currentNum">
+                                <p>Expansions</p>
+                                <p>0</p>
+                        </div>
+                        <div class="currentNum">
+                                <p>Hatcheries</p>
+                                <p>0</p>
+                        </div>
+                        <div class="currentNum">
+                                <p>Lairs</p>
+                                <p>0</p>
+                        </div>
+                        <div class="currentNum">
+                                <p>Hives</p>
+                                <p>0</p>
+                        </div>
+                        <div class="currentNum">
+                                <p>Vespene Geysirs</p>
+                                <p>0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="underTabs" id="upgrades">
+                <div class="content">
+                        <h2>Upgrades</h2>
+                        
+                </div>
+            </div>
+                
+        </div>
+
+
+    </div>
+    <script src="main.js"></script>
 </body>
 </html>

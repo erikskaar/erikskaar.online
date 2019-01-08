@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto";
+    overflow: hidden;
+    white-space: wrap;
+}
+* {
+    user-select: none;
+}
+h1 {
+    text-transform: capitalize;
+    color: crimson;
+    width: 60%;
+    margin: auto;
+}
+#header {
+    border-bottom: 1px solid #EEE;
+}
+#container {
+    width: 85%;
+    margin-left: auto;
+    display: flex;
+}
+.mainTabs {
+    width: 45%;
+    height: 100vh;
+    border: 1px solid #EEE;
+}
+.mainTabs:last-child {
+    width: 55%;
+}
+.underTabs {
+    min-height: 50%;
+    min-width: 85%;
+    margin-right: 1em;
+}
+h2 {
+    padding-left: 1em;
+    color: rgb(32, 95, 178);
+}
+.clickable {
+    height: 20%;
+}
+.underClick {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1em;
+    border-bottom: 2px solid grey;
+    margin: auto;
+    padding-top: 0.5em; 
+}
+.underClick button, .underClick h4 {
+    width: 25%;
+    border-radius: 0px 0px 0px 0px;
+    
+}
+
+button:nth-child(2) {
+    border-radius: 10px 0px 0px 0px;
+    border-right: none;
+}
+button:last-child {
+    border-radius: 0px 10px 0px 0px;
+    border-left: none;
+}
+.underClick h4 {
+    text-align: center;
+}
+button {
+    background-color: white;
+    border: none;
+    border-left: 2px solid grey;
+    border-right: 2px solid grey;
+    border-top: 2px solid grey;
+    box-sizing: border-box;
+    color: rgb(32, 95, 178);
+    transition: 0.5s;
+}
+button:hover {
+    background-color: grey;
+    border-color: grey;
+    color: white;
+    cursor: hover;
+    transition: 0.5s;
+}
+#stats {
+    display: flex;
+    flex-wrap: wrap;
+}
+.currentNum {
+    padding: 0.5em;
+    height: 5%;;
+    width: 20%;
+    border: 2px solid grey;
+    margin: 1em;
+}
+.currentNum p {
+    margin: 0.2em;
+}
+.currentNum p:last-child {
+    float: right;
+}
+.currentNum p:first-child {
+    border-bottom: 1px solid grey;
+    color: rgb(32, 95, 178);
+}
+
+#upgrades {
+    height: 30vh;
+}
