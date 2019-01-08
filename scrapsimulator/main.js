@@ -3,13 +3,16 @@ let queens = {
     amount: 0,
     target: document.querySelector("#queens"),
     gain: 0,
-    cost: 20
+    cost: 2000,
+    multiplier: 1,
+    unlocked: true
 };
 
 
 let minerals = {
     amount: 200,
     target: document.querySelector("#minerals"),
+    multiplier: 1,
     gain: gameTime
 };
 
@@ -17,26 +20,38 @@ let drones = {
     amount: 1,
     target: document.querySelector("#drones"),
     gain: 0,
-    cost: 100
+    cost: 100,
+    multiplier: 1,
+    unlocked: true
 };
 let roaches = {
     amount: 0,
     target: document.querySelector("#roaches"),
     gain: 0,
-    cost: 6
+    cost: 50000,
+    multiplier: 1,
+    unlocked: false
 };
 let hydras = {
     amount: 0,
     target: document.querySelector("#hydras"),
     gain: 0,
-    cost: 12
+    cost: 120000,
+    multiplier: 1,
+    unlocked: false
 };
 
+if (queens.amount>0) {
+    drones.multiplier = 1+queens.amount;
+}
 
+/*
 queens.currency = drones
 drones.currency = minerals
 roaches.currency = queens
 hydras.currency = roaches
+*/
+
 
 //hydras.require = lair
 
@@ -67,10 +82,10 @@ function update() {
 }
 
 
-function addUnit(unit, value) {
-    if (unit.currency.amount >= unit.cost) {
-        unit.amount +=value;
-        unit.currency.amount -= unit.cost;
+function addUnit(unit) {
+    if (minerals.amount >= unit.cost && unit.unlocked) {
+        unit.amount +=1*unit.multiplier;
+        minerals.amount -= unit.cost;
     } else {
         console.log("You can't afford that");
     }
