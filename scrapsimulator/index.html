@@ -16,29 +16,34 @@
         <div class="mainTabs">
             <div class="underTabs">
                     <div class="content">
-                            <h2>Units</h2>
                             <div class="clickable">
                                 <div class="underClick">
                                         <h4>Drone</h4>
-                                        <button onclick="addUnit(drones,1)">Hatch 1 <br>Cost: 100 Minerals</button>
+                                        <button onclick="addUnit(drones)">Hatch 1 <br> <span id="droneCost">100</span> Minerals</button>
                                         <button>Hatch Medium</button>
                                         <button>Hatch Max</button>
                                 </div>
                                 <div class="underClick">
+                                                <h4>Zergling</h4>
+                                                <button onclick="addUnit(zerglings)">Hatch 1 <br> <span id="lingCost">400</span> Minerals</button>
+                                                <button>Hatch Medium</button>
+                                                <button>Hatch Max</button>
+                                        </div>
+                                <div class="underClick">
                                         <h4>Queen</h4>
-                                        <button onclick="addUnit(queens,1)">Hatch 1 <br>Cost: 2000 Minerals</button>
+                                        <button onclick="addUnit(queens)">Hatch 1 <br> <span id="queenCost">2000</span> Minerals</button>
                                         <button>Hatch Medium</button>
                                         <button>Hatch Max</button>
                                 </div>
                                 <div class="underClick">
                                         <h4>Roach</h4>
-                                        <button onclick="addUnit(roaches,1)">Hatch 1 <br>Cost: 50k Minerals</button>
+                                        <button onclick="addUnit(roaches)">Hatch 1 <br> <span id="roachCost">50k</span> Minerals</button>
                                         <button>Hatch Medium</button>
                                         <button>Hatch Max</button>
                                 </div>
                                 <div class="underClick">
-                                        <h4>Hydra</h4>
-                                        <button onclick="addUnit(hydras,1)">Hatch 1 <br>Cost: 120k Minerals</button>
+                                        <h4>Hydralisk</h4>
+                                        <button onclick="addUnit(hydras)">Hatch 1 <br> <span id="hydraCost">120k</span> Minerals</button>
                                         <button>Hatch Medium</button>
                                         <button>Hatch Max</button>
                                 </div>
@@ -51,17 +56,12 @@
         <div class="mainTabs">
             <div class="underTabs">
                 <div class="content">
-                    <h2>Stats</h2>
                     <div id="stats">
                         <div class="currentNum" onclick="manuallyMine()">
                                 <p>Minerals <br> (click to mine)</p>
                                 <p id="minerals">200</p>
                         </div>
-                        <div class="currentNum">
-                                <p>Vespene Gas</p>
-                                <p id="gas">0</p>
-                        </div>
-                        <div class="currentNum">
+                        <div class="currentNum" id="droneBox">
                                 <p>Drones</p>
                                 <p id="drones">1</p>
                         </div>
@@ -78,27 +78,7 @@
                                 <p id="hydras">0</p>
                         </div>
                         <div class="currentNum">
-                                <p>Territory</p>
-                                <p>0</p>
-                        </div>
-                        <div class="currentNum">
                                 <p>Expansions</p>
-                                <p>0</p>
-                        </div>
-                        <div class="currentNum">
-                                <p>Hatcheries</p>
-                                <p>0</p>
-                        </div>
-                        <div class="currentNum">
-                                <p>Lairs</p>
-                                <p>0</p>
-                        </div>
-                        <div class="currentNum">
-                                <p>Hives</p>
-                                <p>0</p>
-                        </div>
-                        <div class="currentNum">
-                                <p>Vespene Geysirs</p>
                                 <p>0</p>
                         </div>
                     </div>
@@ -110,14 +90,12 @@
         <div class="mainTabs" id="upgrades">
                         <div class="underTabs">
                                 <div class="content" id="upgradeContainer">
-                                        <h2>Upgrades</h2>
-                                        <button>Metabolic Boost</button>
+                                        <button onclick="addUpgrade(mBoost)" id="mBoost">Metabolic Boost</button>
                                         <button>Melee Attacks 1</button>
-                                        <button>Missile Attacks 1</button>
-                                        <button>Flying Attacks 1</button>
                                         <button>Glial Reconstitution</button>
                                         <button>Grooved Spines</button>
                                         <button>Adrenal Glands</button>
+                                        <button>Lair</button>
                                 </div>
                                 
                         </div>
