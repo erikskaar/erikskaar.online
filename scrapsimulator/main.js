@@ -7,7 +7,7 @@ let clickGain = 1;
 
 
 let minerals = {
-    amount: 20000,
+    amount: 200000,
     target: document.querySelector("#minerals"),
     multiplier: 1,
     gain: gameTime
@@ -66,6 +66,7 @@ let roaches = {
     amount: 0,
     target: document.querySelector("#roaches"),
     costTarget: document.querySelector("#roachCost"),
+    mineSpeed: 100,
     gain: 0,
     cost: 50000,
     multiplier: 1,
@@ -75,6 +76,7 @@ let hydras = {
     amount: 0,
     target: document.querySelector("#hydras"),
     costTarget: document.querySelector("#hydraCost"),
+    mineSpeed: 240,
     gain: 0,
     cost: 120000,
     multiplier: 1,
@@ -153,7 +155,7 @@ function manuallyMine() {
 
 function update() {
     //gain
-    minerals.gain = gameTime*(drones.amount*drones.mineSpeed*drones.multiplier + zerglings.amount*zerglings.mineSpeed*zerglings.multiplier + qDrones.amount*qDrones.mineSpeed*qDrones.multiplier);
+    minerals.gain = gameTime*(drones.amount*drones.mineSpeed*drones.multiplier + zerglings.amount*zerglings.mineSpeed*zerglings.multiplier + qDrones.amount*qDrones.mineSpeed*qDrones.multiplier + roaches.amount*roaches.mineSpeed*roaches.multiplier+hydras.amount*hydras.mineSpeed*hydras.multiplier);
     qDrones.gain = queens.amount/50;
     for (let i=0;i<units.length;i++) {
         if (units[i].cost>minerals.amount || !units[i].unlocked) {
