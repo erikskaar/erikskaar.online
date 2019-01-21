@@ -11,6 +11,7 @@
 <body>
     <div id="header">
         <h1>Zerg Simulator v0.1</h1>
+        <h1><span id="mPs">0</span> Minerals per second</h1>
     </div>
     <div id="container">
         <div class="mainTabs">
@@ -24,11 +25,11 @@
                                         <button>Hatch Max</button>
                                 </div>
                                 <div class="underClick">
-                                                <h4>Zergling</h4>
-                                                <button onclick="addUnit(zerglings)">Hatch 1 <br> <span id="lingCost">400</span> Minerals</button>
-                                                <button>Hatch Medium</button>
-                                                <button>Hatch Max</button>
-                                        </div>
+                                        <h4>Zergling</h4>
+                                        <button onclick="addUnit(zerglings)">Hatch 1 <br> <span id="lingCost">400</span> Minerals</button>
+                                        <button>Hatch Medium</button>
+                                        <button>Hatch Max</button>
+                                </div>
                                 <div class="underClick">
                                         <h4>Queen</h4>
                                         <button onclick="addUnit(queens)">Hatch 1 <br> <span id="queenCost">2000</span> Minerals</button>
@@ -47,6 +48,10 @@
                                         <button>Hatch Medium</button>
                                         <button>Hatch Max</button>
                                 </div>
+                                <div id="overClick">
+                                        <button onclick="manuallyMine()" id="megaClick">Click to mine minerals</button>
+                                </div>
+                                
                                 
                             </div>
                     </div>
@@ -57,23 +62,23 @@
             <div class="underTabs">
                 <div class="content">
                     <div id="stats">
-                        <div class="currentNum" onclick="manuallyMine()">
-                                <p>Minerals <br> (click to mine)</p>
+                        <div class="currentNum">
+                                <p>Minerals</p>
                                 <p id="minerals">200</p>
                         </div>
-                        <div class="currentNum" id="droneBox">
+                        <div class="currentNum" title="Basic harvesting units">
                                 <p>Drones</p>
                                 <p id="drones">1</p>
                         </div>
-                        <div class="currentNum">
+                        <div class="currentNum" title="Drones spawned by queens. Half as effective as normal drones">
                                 <p>Queen Drones</p>
                                 <p id="qDrones">0</p>
                         </div>
-                        <div class="currentNum">
+                        <div class="currentNum" title="Twice as effective as base drones">
                                 <p>Zerglings</p>
                                 <p id="zerglings">0</p>
                         </div>
-                        <div class="currentNum">
+                        <div class="currentNum" title="Spawns Queen Drones every few seconds">
                                 <p>Queens</p>
                                 <p id="queens">0</p>
                         </div>
@@ -98,12 +103,12 @@
         <div class="mainTabs" id="upgrades">
                         <div class="underTabs">
                                 <div class="content" id="upgradeContainer">
-                                        <button onclick="addUpgrade(mBoost)" id="mBoost">Metabolic Boost</button>
-                                        <button onclick="addUpgrade(mA1)" id="mA1">Melee Attacks 1</button>
-                                        <button>Glial Reconstitution</button>
-                                        <button>Grooved Spines</button>
-                                        <button>Adrenal Glands</button>
-                                        <button>Lair</button>
+                                        <button onclick="addUpgrade(mBoost)" id="mBoost" title="Zerglings are twice as effective">Metabolic Boost <br> 1k Minerals</button>
+                                        <button onclick="addUpgrade(mA1)" id="mA1" title="+9 Minerals on manual clicking">Melee Attacks 1 <br> 1k Minerals</button>
+                                        <button onclick="addUpgrade(gRecon)" id="gRecon" title="Doubles the effectiveness of roaches">Glial Reconstitution <br> 400k Minerals</button>
+                                        <button onclick="addUpgrade(gSPines)" id="gSpines" title="Doubles the effectiveness of hydralisks">Grooved Spines <br> 800k Minerals</button>
+                                        <button onclick="addUpgrade(aGlands)" id="aGlands" title="4x the effectiveness of zerglings">Adrenal Glands <br> 120k Minerals</button>
+                                        <button onclick="addUpgrade(lair)" id="lair" title="Unlocks roaches, hydralisks and improves income by 50%">Lair <br> 250k Minerals</button>
                                 </div>
                                 
                         </div>

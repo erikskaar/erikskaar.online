@@ -11,12 +11,15 @@ body {
 h1 {
     text-transform: capitalize;
     color: crimson;
-    width: 85%;
+    width: 100%;
     margin: auto;
 }
 #header {
     border-bottom: 1px solid #EEE;
     height: 7vh;
+    display: flex;
+    width: 85%;
+    margin: auto;
 }
 #container {
     width: 85%;
@@ -41,10 +44,10 @@ h1 {
 }
 #upgrades {
     width: 100%;
-    height: 10vh;
+    height: 7vh;
     position: fixed;
     bottom: 0px;
-    top: 90vh;
+    top: 93vh;
 }
 h2 {
     padding-left: 1em;
@@ -54,7 +57,7 @@ h2 {
     max-height: 100vh;
 }
 .clickable {
-    height: 20%;
+    max-height: 93vh;
 }
 .underClick {
     display: flex;
@@ -123,9 +126,6 @@ button:hover {
     color: rgb(32, 95, 178);
 }
 
-#upgrades {
-    height: 23vh;
-}
 #upgradeContainer {
     display: flex;
     width: 100%;
@@ -138,6 +138,7 @@ button:hover {
     border-bottom: 2px solid grey;
     padding: 2em;
     box-sizing: border-box;
+    height: 7vh;
 }
 #upgradeContainer button:first-child {
     border-left: 2px solid grey;
@@ -148,3 +149,20 @@ button:hover {
     border-right: 2px solid grey;
 }
 
+#megaClick {
+    font-size: 2em;
+    padding: 2em;
+    border: none;
+    border-radius: 5px 5px 5px 5px;
+    background-color: grey;
+    color: white;
+    margin-top: 10vh;
+}
+#overClick {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#overClick:active {
+    transform: translateY(4px);
+}

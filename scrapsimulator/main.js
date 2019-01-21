@@ -7,7 +7,7 @@ let clickGain = 1;
 
 
 let minerals = {
-    amount: 2000,
+    amount: 20000,
     target: document.querySelector("#minerals"),
     multiplier: 1,
     gain: gameTime
@@ -69,7 +69,7 @@ let roaches = {
     gain: 0,
     cost: 50000,
     multiplier: 1,
-    unlocked: false
+    unlocked: true
 };
 let hydras = {
     amount: 0,
@@ -96,18 +96,30 @@ let mA1 = {
     cost: 1000,
     costTarget: document.querySelector("#mA1")
 }
+let gRecon = {
+    enabled: false,
+    cost: 400000,
+    costTarget: document.querySelector("#gRecon")
+}
+let gSpines = {
+    enabled: false,
+    cost: 800000,
+    costTarget: document.querySelector("#gSpines")
+}
+let aGlands = {
+    enabled: false,
+    cost: 120000,
+    costTarget: document.querySelector("#aGlands")
+}
 let lair = {
     enabled: false,
-    cost: 40000,
+    cost: 250000,
     costTarget: document.querySelector("#lair")
 }
 
-
-let upgrades = [mBoost, mA1, lair];
-
+let upgrades = [mBoost, mA1, gRecon, gSpines, aGlands, lair];
 
 
-//////////BUILDINGS////////////////////
 
 
 
@@ -141,7 +153,7 @@ function manuallyMine() {
 
 function update() {
     //gain
-    minerals.gain = gameTime*(drones.amount*drones.mineSpeed + zerglings.amount*zerglings.mineSpeed + qDrones.amount*qDrones.mineSpeed);
+    minerals.gain = gameTime*(drones.amount*drones.mineSpeed*drones.multiplier + zerglings.amount*zerglings.mineSpeed*zerglings.multiplier + qDrones.amount*qDrones.mineSpeed*qDrones.multiplier);
     qDrones.gain = queens.amount/50;
     for (let i=0;i<units.length;i++) {
         if (units[i].cost>minerals.amount || !units[i].unlocked) {
@@ -158,13 +170,14 @@ function update() {
             upgrades[i].costTarget.style.color = "rgb(32, 95, 178)";
         }
     }
+    document.querySelector("#mPs").innerHTML = Math.floor(minerals.gain*100*gameTime);
 
 }
 
 
 function addUnit(unit) {
     if (minerals.amount >= unit.cost && unit.unlocked) {
-        unit.amount +=1*unit.multiplier;
+        unit.amount +=1;
         minerals.amount -= unit.cost;
         unit.cost = Math.floor(Math.pow(unit.cost,(1+unit.amount/unit.costIncrease)));
         if (unit.cost.toString().length>4) {
@@ -199,19 +212,33 @@ function gain(object) {
 
 
 function checkForUpgrades() {
+    for (let i = 0; i < upgrades.length; i++) {
+        if (upgrades[i].enabled) {
+            upgrades[i].costTarget.style.backgroundColor = "green";
+            upgrades[i].costTarget.style.color = "white";
+        }
+    }
     if (mBoost.enabled) {
         zerglings.multiplier = 2;
-        document.querySelector("#mBoost").style.backgroundColor = "green";
-        document.querySelector("#mBoost").style.color = "white";
+
     }
     if (mA1.enabled) {
         clickGain = 10;
-        document.querySelector("#mA1").style.backgroundColor = "green";
-        document.querySelector("#mA1").style.color = "white";
+    }
+    if (gRecon.enabled) {
+        roaches.multiplier = 2;
+    }
+    if (gSpines.enabled) {
+        hydras.multiplier = 2;
+    }
+    if (aGlands.enabled) {
+        zerglings.multiplier = 8;
     }
     if (lair.enabled) {
-        roaches.unlocked = true;
+        hydras.unlocked = true;
+        gameTime = 0.15;
     }
+
 
 }
 
@@ -226,12 +253,17 @@ function checkForUpgrades() {
 
 window.setInterval(function(){
     gain(minerals);
+    /*
     gain(drones);
     gain(qDrones);
     gain(zerglings);
     gain(queens);
     gain(roaches);
     gain(hydras);
+    */
+   for (let i = 0; i<units.length; i++) {
+       gain(units[i]);
+   }
     update();
     checkForUpgrades();
     
