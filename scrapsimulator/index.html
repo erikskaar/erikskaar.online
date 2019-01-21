@@ -66,6 +66,14 @@
                                 <p id="drones">1</p>
                         </div>
                         <div class="currentNum">
+                                <p>Queen Drones</p>
+                                <p id="qDrones">0</p>
+                        </div>
+                        <div class="currentNum">
+                                <p>Zerglings</p>
+                                <p id="zerglings">0</p>
+                        </div>
+                        <div class="currentNum">
                                 <p>Queens</p>
                                 <p id="queens">0</p>
                         </div>
@@ -91,7 +99,7 @@
                         <div class="underTabs">
                                 <div class="content" id="upgradeContainer">
                                         <button onclick="addUpgrade(mBoost)" id="mBoost">Metabolic Boost</button>
-                                        <button>Melee Attacks 1</button>
+                                        <button onclick="addUpgrade(mA1)" id="mA1">Melee Attacks 1</button>
                                         <button>Glial Reconstitution</button>
                                         <button>Grooved Spines</button>
                                         <button>Adrenal Glands</button>
@@ -100,6 +108,9 @@
                                 
                         </div>
                     </div>
+        <div>
+                <div id="phantomTarget"></div>
+        </div>
 
 
     </div>

@@ -1,13 +1,13 @@
 
 let gameTime = 0.1;
-
+let clickGain = 1;
 
 ////////////////RESOURCES//////////////////
 
 
 
 let minerals = {
-    amount: 50,
+    amount: 2000,
     target: document.querySelector("#minerals"),
     multiplier: 1,
     gain: gameTime
@@ -40,12 +40,23 @@ let drones = {
     unlocked: true
 };
 
+let qDrones = {
+    amount: 0,
+    target: document.querySelector("#qDrones"),
+    costTarget: document.querySelector("#phantomTarget"),
+    mineSpeed: 0.5,
+    gain: 0,
+    cost: 0,
+    multiplier: 1,
+    unlocked: true
+}
+
 
 let zerglings = {
     amount: 0,
     target: document.querySelector("#zerglings"),
     costTarget: document.querySelector("#lingCost"),
-    mineSpeed: 0.15,
+    mineSpeed: 2,
     gain: 0,
     cost: 400,
     multiplier: 1,
@@ -70,19 +81,29 @@ let hydras = {
     unlocked: false
 };
 
-units = [drones,queens,zerglings,roaches,hydras];
+units = [drones,qDrones,queens,zerglings,roaches,hydras];
 
 
 
 //////////UPGRADES/////////////////////
 let mBoost = {
     enabled: false,
-    cost: 1000
+    cost: 1000,
+    costTarget: document.querySelector("#mBoost")
+}
+let mA1 = {
+    enabled: false,
+    cost: 1000,
+    costTarget: document.querySelector("#mA1")
+}
+let lair = {
+    enabled: false,
+    cost: 40000,
+    costTarget: document.querySelector("#lair")
 }
 
 
-
-
+let upgrades = [mBoost, mA1, lair];
 
 
 
@@ -113,16 +134,15 @@ hydras.costIncrease = 25;
 
 
 function manuallyMine() {
-    minerals.amount +=1;
+    minerals.amount +=clickGain;
 }
 
-//drones.costTarget.parentElement.style.color = "red";
 
 
 function update() {
     //gain
-    minerals.gain = gameTime*drones.amount*drones.mineSpeed + zerglings.amount*zerglings.mineSpeed;
-    drones.gain = queens.amount/50;
+    minerals.gain = gameTime*(drones.amount*drones.mineSpeed + zerglings.amount*zerglings.mineSpeed + qDrones.amount*qDrones.mineSpeed);
+    qDrones.gain = queens.amount/50;
     for (let i=0;i<units.length;i++) {
         if (units[i].cost>minerals.amount || !units[i].unlocked) {
             units[i].costTarget.parentElement.style.color = "red";
@@ -130,6 +150,13 @@ function update() {
             units[i].costTarget.parentElement.style.color = "rgb(32, 95, 178)";
         }
     
+    }
+    for (let i=0;i<upgrades.length;i++) {
+        if (upgrades[i].cost>minerals.amount) {
+            upgrades[i].costTarget.style.color = "red";
+        } else {
+            upgrades[i].costTarget.style.color = "rgb(32, 95, 178)";
+        }
     }
 
 }
@@ -177,6 +204,15 @@ function checkForUpgrades() {
         document.querySelector("#mBoost").style.backgroundColor = "green";
         document.querySelector("#mBoost").style.color = "white";
     }
+    if (mA1.enabled) {
+        clickGain = 10;
+        document.querySelector("#mA1").style.backgroundColor = "green";
+        document.querySelector("#mA1").style.color = "white";
+    }
+    if (lair.enabled) {
+        roaches.unlocked = true;
+    }
+
 }
 
 
@@ -191,6 +227,8 @@ function checkForUpgrades() {
 window.setInterval(function(){
     gain(minerals);
     gain(drones);
+    gain(qDrones);
+    gain(zerglings);
     gain(queens);
     gain(roaches);
     gain(hydras);
