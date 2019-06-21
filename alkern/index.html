@@ -122,7 +122,10 @@ function sortContent(navigator, beverage) {
 .then(function(querySnapshot) {
   querySnapshot.forEach(function(doc) { 
     //console.log(doc.data());
-    
+    let textDiv = document.createElement("div");
+    textDiv.className = "textDiv";
+
+
     let drinkDiv = document.createElement("div");
     drinkDiv.className = "drinkDiv";
     let headerTag = document.createElement("h2");
@@ -130,31 +133,41 @@ function sortContent(navigator, beverage) {
     drinkDiv.appendChild(headerTag);
     let priceTag = document.createElement("p");
     priceTag.innerHTML = "Pris: " + doc.data().Price + " kr";
-    drinkDiv.appendChild(priceTag);
+    textDiv.appendChild(priceTag);
     let percentageTag = document.createElement("p");
     percentageTag.innerHTML = "Prosent: " + doc.data().Percentage + "%";
-    drinkDiv.appendChild(percentageTag);
+    textDiv.appendChild(percentageTag);
     let ppLiterTag = document.createElement("p");
     ppLiterTag.innerHTML = "Pris per liter: " + doc.data().Priceperliter + " kr/l";
-    drinkDiv.appendChild(ppLiterTag);
+    textDiv.appendChild(ppLiterTag);
     let ppPercentageTag = document.createElement("p");
     ppPercentageTag.innerHTML = "Pris per prosent: " + doc.data().Priceperpercentage + " kr/%";
-    drinkDiv.appendChild(ppPercentageTag);
+    textDiv.appendChild(ppPercentageTag);
     let typeTag = document.createElement("p");
     typeTag.innerHTML = "Type: " + doc.data().Type;
-    drinkDiv.appendChild(typeTag);
+    textDiv.appendChild(typeTag);
     let volumeTag = document.createElement("p");
     volumeTag.innerHTML = "Volum: " + doc.data().Volume + "l";
-    drinkDiv.appendChild(volumeTag);
-    let productNumberTag = document.createElement("p");
+    textDiv.appendChild(volumeTag);
+    /*let productNumberTag = document.createElement("p");
     productNumberTag.innerHTML = "Produktnummer: " + doc.data().Productnumber;
-    drinkDiv.appendChild(productNumberTag);
+    drinkDiv.appendChild(productNumberTag);*/
     let urlTag = document.createElement("a");
-    urlTag.innerHTML = doc.data().Name;
+    urlTag.innerHTML = doc.data().Name + "<br>";
     urlTag.href = doc.data().URL;
-    drinkDiv.appendChild(urlTag);
+    textDiv.appendChild(urlTag);
+    
 
+    let imgDiv = document.createElement("div");
+    let img = document.createElement("img");
+    imgDiv.className = "imgDiv";
+    img.src = "https://bilder.vinmonopolet.no/cache/515x515-0/" + doc.data().Productnumber + "-1.jpg";
+    img.className = "drinkImage";
+    imgDiv.appendChild(img);
+    drinkDiv.appendChild(textDiv);
+    drinkDiv.appendChild(imgDiv);
     document.querySelector("#container").appendChild(drinkDiv);
+    
 
   });
 
@@ -191,6 +204,10 @@ function startupSortContent(navigator) {
   querySnapshot.forEach(function(doc) { ///////////////////////////////////////FIX FUCKED UP NAMES
     //console.log(doc.data());
     
+    let textDiv = document.createElement("div");
+    textDiv.className = "textDiv";
+
+
     let drinkDiv = document.createElement("div");
     drinkDiv.className = "drinkDiv";
     let headerTag = document.createElement("h2");
@@ -198,32 +215,41 @@ function startupSortContent(navigator) {
     drinkDiv.appendChild(headerTag);
     let priceTag = document.createElement("p");
     priceTag.innerHTML = "Pris: " + doc.data().Price + " kr";
-    drinkDiv.appendChild(priceTag);
+    textDiv.appendChild(priceTag);
     let percentageTag = document.createElement("p");
     percentageTag.innerHTML = "Prosent: " + doc.data().Percentage + "%";
-    drinkDiv.appendChild(percentageTag);
+    textDiv.appendChild(percentageTag);
     let ppLiterTag = document.createElement("p");
     ppLiterTag.innerHTML = "Pris per liter: " + doc.data().Priceperliter + " kr/l";
-    drinkDiv.appendChild(ppLiterTag);
+    textDiv.appendChild(ppLiterTag);
     let ppPercentageTag = document.createElement("p");
     ppPercentageTag.innerHTML = "Pris per prosent: " + doc.data().Priceperpercentage + " kr/%";
-    drinkDiv.appendChild(ppPercentageTag);
+    textDiv.appendChild(ppPercentageTag);
     let typeTag = document.createElement("p");
     typeTag.innerHTML = "Type: " + doc.data().Type;
-    drinkDiv.appendChild(typeTag);
+    textDiv.appendChild(typeTag);
     let volumeTag = document.createElement("p");
     volumeTag.innerHTML = "Volum: " + doc.data().Volume + "l";
-    drinkDiv.appendChild(volumeTag);
-    let productNumberTag = document.createElement("p");
+    textDiv.appendChild(volumeTag);
+    /*let productNumberTag = document.createElement("p");
     productNumberTag.innerHTML = "Produktnummer: " + doc.data().Productnumber;
-    drinkDiv.appendChild(productNumberTag);
+    drinkDiv.appendChild(productNumberTag);*/
     let urlTag = document.createElement("a");
-    urlTag.innerHTML = doc.data().Name;
+    urlTag.innerHTML = doc.data().Name + "<br>";
     urlTag.href = doc.data().URL;
-    drinkDiv.appendChild(urlTag);
+    textDiv.appendChild(urlTag);
+    
 
+    let imgDiv = document.createElement("div");
+    let img = document.createElement("img");
+    imgDiv.className = "imgDiv";
+    img.src = "https://bilder.vinmonopolet.no/cache/515x515-0/" + doc.data().Productnumber + "-1.jpg";
+    img.className = "drinkImage";
+    imgDiv.appendChild(img);
+    drinkDiv.appendChild(textDiv);
+    drinkDiv.appendChild(imgDiv);
     document.querySelector("#container").appendChild(drinkDiv);
-
+    
   });
 
 
