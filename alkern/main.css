@@ -1,0 +1,188 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: white;
+    /*overflow: hidden;
+*/
+}
+#header {
+    width: 100%;
+    min-height: 5vh;
+    text-align: left;
+    color: white;
+    margin: 0;
+    background-color: #004B80;
+    display: inline-block;
+}
+#header h1 {
+    margin: 0;
+    text-align: center;
+    padding: 20px;
+}
+#headerId {
+    text-align: center;
+    float: left;
+    font-size: 4em;
+}
+#headerContainer {
+    width: 100%;
+    height: 10vh;
+    background-color: #004B80;
+    position: sticky;
+    top: 0px;
+}
+
+#hideButton:hover {
+    color: #EE7810;
+    transition: 0.5s linear;
+    cursor: pointer;
+}
+#showButton {
+    color: white;
+    position: fixed;
+    display: block;
+    font-size: 4em;
+    margin: 0em;
+    left: 10px;
+    transition: 0.5s linear;
+    /*border-bottom: 4px solid #EE7810;*/
+}
+#showButton:hover {
+    cursor: pointer;
+    color: #EE7810;
+    transition: 0.5s linear;
+    /*border-bottom: 4px solid white;*/
+}
+#contentContainer {
+    width: 100%;
+    display: flex;
+
+}
+#navbar {
+    width: 20vw;
+    left: -100vw;
+    height: 100vh;
+    background-color: #004B80;
+    position: fixed;
+    transition: 0.5s linear;
+    border-right: 0px solid #004B80;
+
+}
+#navContent {
+    height: 90vh;
+    overflow-y: scroll;
+    padding-bottom: 10vh;
+}
+#navContent::-webkit-scrollbar { 
+    display: none; 
+}
+#sortButton {
+    position: sticky;
+    top: 0px;
+    border: 4px solid #EE7810;
+    background-color: #004B80;
+    margin: 0;
+    
+}
+#sortButton p {
+    color: white;
+    transition: 0.1s linear;
+}
+#sortButton:hover {
+    box-shadow: none;
+    color: #EE7810;
+}
+#sortButton:hover p {
+    color: #EE7810;
+    transition: 0.1s linear;
+}
+.navItem {
+    margin: 1em;
+    padding: 0.5em;
+    background-color: #EE7810;
+    transition: 0.1s linear;
+    /*box-shadow: 4px 4px;*/
+    border-radius: 2px;
+    max-height: 9vh;
+}
+
+.navItem:hover {
+    transition: 0.1s linear;
+    top: 1px;
+    box-shadow: 4px 4px white;
+    cursor: pointer;
+}
+.navItem p {
+    color: white;
+    font-size: 2em;
+    padding: 1em;
+    text-align: center;
+    margin: 0;
+}
+.selected {
+    background-color: white;
+}
+.selected p {
+    color: #004B80;
+}
+.selected:hover {
+    box-shadow: none;
+}
+#container {
+    width: 100%;
+    margin-left: 0vw; 
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    transition: 0.5s linear;
+    vertical-align: middle;
+    min-height: 90vh;
+    border-top: 4px solid #EE7810;
+
+}
+#titleDiv {
+    width: 100%;
+    height: 10vh;
+    text-align: center;
+    color: #EE7810;
+    position: sticky;
+    top:0em;
+    padding-top: 1em;
+}
+.drinkDiv {
+    width: calc(100%/4);
+    margin-bottom: 2em;
+    margin-left: 1em;
+    margin-right: 1em;
+    padding: 1em;
+    background-color: #EE7810;
+    color: white;
+    border-radius: 2px;
+}
+.drinkDiv h2 {
+    margin: auto;
+    text-align: center;
+}
+.drinkDiv a {
+    color: #004B80;
+}
+.drinkDiv p, a {
+    padding: 0;
+    margin: 0.5em;
+}
+#footer {
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    background-color: #333;
+    height: 30vh;
+    transition: 0.5s linear;
+}
+#footer p {
+    position: sticky;
+    padding: 1em;
+    transition: 0.5s linear;
+    top: 0;
+}

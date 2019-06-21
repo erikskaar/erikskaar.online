@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TestApp</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="headerContainer">
+        <h1 id="showButton">☰ Alkern</h1>
+    </div>
+    <div id="contentContainer">
+      
+        <div id="navbar">
+            <div id="navContent">
+              <div id="sortButton" class="navItem">
+                  <p>Sortering <span id="sortArrow">↓</span></p>
+              </div>
+
+                <div class="navItem beverage selected" onclick="queryAllFix()">
+                    <p>Alt</p>
+                </div>
+                <div class="navItem beverage" onclick="onClickFix('Rødvin')">
+                  <p>Rødvin</p>
+                </div>
+                <div class="navItem beverage" onclick="onClickFix('Hvitvin')">
+                    <p>Hvitvin</p>
+                </div>
+                <div class="navItem beverage" onclick="onClickFix('Whisky')">
+                    <p>Whisky</p>
+                </div>
+                <div class="navItem beverage" onclick="onClickFix('Vodka')">
+                    <p>Vodka</p>
+                </div>
+                <div class="navItem beverage" onclick="onClickFix('Champagne extra brut')">
+                    <p>Champagne</p>
+                </div>
+                <div class="navItem beverage" onclick="onClickFix('Gin')">
+                    <p>Gin</p>
+                </div>
+
+        </div>
+          </div>
+        <div id="container"></div>
+        
+    </div>
+    
+
+    
+    <div id="footer">
+      <p>Made by Erik Skår for the Bokom Project</p>
+      </div>
+    
+
+
+
+
+
+
+
+
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  //TODO:
+  //
+  //
+  //Fix scrollbar not scrolling all the way
+
+
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////
+
+////////ALKERN
+
+  var firebaseConfig = {
+      apiKey: "AIzaSyBN60YnWOzGQx4mU6XyHQRQNBWwk1WVwZM",
+      authDomain: "project-696969.firebaseapp.com",
+      databaseURL: "https://project-696969.firebaseio.com",
+      projectId: "project-696969",
+      storageBucket: "project-696969.appspot.com",
+      messagingSenderId: "646276900797",
+      appId: "1:646276900797:web:9073340b95f57d6a"
+    };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.firestore();
+
+  const docRef = db.collection("beverages");
+  const headerID = document.querySelector("#headerId");
+
+let lastNavigator = "";
+let lastBeverage = "";
+let sortingDown = true;
+let specificBeverage = false;
+
+function sortContent(navigator, beverage) {
+  removeChildren();
+  addTitle(beverage);
+    
+  docRef.where("Priceperpercentage", "<", 100000).where("Type", "==", beverage).orderBy("Priceperpercentage", navigator).limit(6).get()
+.then(function(querySnapshot) {
+  querySnapshot.forEach(function(doc) { 
+    //console.log(doc.data());
+    
+    let drinkDiv = document.createElement("div");
+    drinkDiv.className = "drinkDiv";
+    let headerTag = document.createElement("h2");
+    headerTag.innerHTML = doc.data().Name;
+    drinkDiv.appendChild(headerTag);
+    let priceTag = document.createElement("p");
+    priceTag.innerHTML = "Pris: " + doc.data().Price + " kr";
+    drinkDiv.appendChild(priceTag);
+    let percentageTag = document.createElement("p");
+    percentageTag.innerHTML = "Prosent: " + doc.data().Percentage + "%";
+    drinkDiv.appendChild(percentageTag);
+    let ppLiterTag = document.createElement("p");
+    ppLiterTag.innerHTML = "Pris per liter: " + doc.data().Priceperliter + " kr/l";
+    drinkDiv.appendChild(ppLiterTag);
+    let ppPercentageTag = document.createElement("p");
+    ppPercentageTag.innerHTML = "Pris per prosent: " + doc.data().Priceperpercentage + " kr/%";
+    drinkDiv.appendChild(ppPercentageTag);
+    let typeTag = document.createElement("p");
+    typeTag.innerHTML = "Type: " + doc.data().Type;
+    drinkDiv.appendChild(typeTag);
+    let volumeTag = document.createElement("p");
+    volumeTag.innerHTML = "Volum: " + doc.data().Volume + "l";
+    drinkDiv.appendChild(volumeTag);
+    let productNumberTag = document.createElement("p");
+    productNumberTag.innerHTML = "Produktnummer: " + doc.data().Productnumber;
+    drinkDiv.appendChild(productNumberTag);
+    let urlTag = document.createElement("a");
+    urlTag.innerHTML = doc.data().Name;
+    urlTag.href = doc.data().URL;
+    drinkDiv.appendChild(urlTag);
+
+    document.querySelector("#container").appendChild(drinkDiv);
+
+  });
+
+
+})
+.catch(function(error) {
+  console.log(error);
+});
+
+lastNavigator = navigator;
+lastBeverage = beverage;
+}
+
+
+function onClickFix(string) {
+  let beverage = string;
+  specificBeverage = true;
+  sortContent(lastNavigator, beverage);
+  console.log(sortingDown);
+}
+function queryAllFix() {
+  specificBeverage = false;
+  removeChildren();
+  startupSortContent(lastNavigator);
+  console.log(sortingDown);
+}
+
+
+
+function startupSortContent(navigator) {
+  docRef.where("Priceperpercentage", "<", 100000).orderBy("Priceperpercentage", navigator).limit(6).get()
+.then(function(querySnapshot) {
+  addTitle("Alle");
+  querySnapshot.forEach(function(doc) { ///////////////////////////////////////FIX FUCKED UP NAMES
+    //console.log(doc.data());
+    
+    let drinkDiv = document.createElement("div");
+    drinkDiv.className = "drinkDiv";
+    let headerTag = document.createElement("h2");
+    headerTag.innerHTML = doc.data().Name;
+    drinkDiv.appendChild(headerTag);
+    let priceTag = document.createElement("p");
+    priceTag.innerHTML = "Pris: " + doc.data().Price + " kr";
+    drinkDiv.appendChild(priceTag);
+    let percentageTag = document.createElement("p");
+    percentageTag.innerHTML = "Prosent: " + doc.data().Percentage + "%";
+    drinkDiv.appendChild(percentageTag);
+    let ppLiterTag = document.createElement("p");
+    ppLiterTag.innerHTML = "Pris per liter: " + doc.data().Priceperliter + " kr/l";
+    drinkDiv.appendChild(ppLiterTag);
+    let ppPercentageTag = document.createElement("p");
+    ppPercentageTag.innerHTML = "Pris per prosent: " + doc.data().Priceperpercentage + " kr/%";
+    drinkDiv.appendChild(ppPercentageTag);
+    let typeTag = document.createElement("p");
+    typeTag.innerHTML = "Type: " + doc.data().Type;
+    drinkDiv.appendChild(typeTag);
+    let volumeTag = document.createElement("p");
+    volumeTag.innerHTML = "Volum: " + doc.data().Volume + "l";
+    drinkDiv.appendChild(volumeTag);
+    let productNumberTag = document.createElement("p");
+    productNumberTag.innerHTML = "Produktnummer: " + doc.data().Productnumber;
+    drinkDiv.appendChild(productNumberTag);
+    let urlTag = document.createElement("a");
+    urlTag.innerHTML = doc.data().Name;
+    urlTag.href = doc.data().URL;
+    drinkDiv.appendChild(urlTag);
+
+    document.querySelector("#container").appendChild(drinkDiv);
+
+  });
+
+
+})
+.catch(function(error) {
+  console.log(error);
+});
+lastNavigator = navigator;
+}
+
+
+function addTitle(name) {
+  let titleDiv = document.createElement("div");
+  titleDiv.id = "titleDiv";
+  let titleText = document.createElement("h1");
+  if (sortingDown) {
+    titleText.innerHTML = name + " - billigst per prosent";
+  } else if (!sortingDown) {
+    titleText.innerHTML = name + " - dyrest per prosent";
+  }
+  titleDiv.appendChild(titleText);
+  document.querySelector("#container").appendChild(titleDiv);
+}
+
+
+//sortingDown = !sortingDown;
+startupSortContent("asc");
+
+
+
+
+
+
+function removeChildren() {
+  while(document.querySelector("#container").children.length > 0) {
+    document.querySelector("#container").removeChild(document.querySelector("#container").lastChild);
+  }
+}
+
+
+
+document.querySelector("#sortButton").addEventListener("click", function() {
+  removeChildren();
+  sortingDown = !sortingDown;
+  if (sortingDown) {
+    if (specificBeverage) {
+      sortContent("asc", lastBeverage);
+    } else {
+      startupSortContent("asc");
+    }
+    
+  } else if (!sortingDown) {
+    if (specificBeverage) {
+      sortContent("desc", lastBeverage);
+    } else {
+      startupSortContent("desc");
+    }
+  }
+  
+  
+  changeArrow();
+
+})
+
+
+for (let x=0; x < document.querySelectorAll(".beverage").length; x++) {
+    document.querySelectorAll(".beverage")[x].addEventListener("click", function() {
+      for (let i=0; i< document.querySelectorAll(".beverage").length; i++) {
+        document.querySelectorAll(".beverage")[i].className ="navItem beverage";
+      }
+      this.className = "navItem beverage selected";
+    })
+  }
+
+
+
+
+
+
+function changeArrow() {
+  if (sortingDown) {
+    document.querySelector("#sortArrow").innerHTML = "↓";
+  } else if (!sortingDown) {
+    document.querySelector("#sortArrow").innerHTML = "↑";
+  }
+  console.log(sortingDown);
+}
+</script>
+<script>
+  let isHidden = true;
+  document.querySelector("#showButton").addEventListener("click", function() {
+    if (isHidden) {
+      document.querySelector("#navbar").style.left = 0;
+      document.querySelector("#container").style.marginLeft = "20vw";
+      document.querySelector("#footer p").style.paddingLeft = "20vw";
+    } else {
+      document.querySelector("#navbar").style.left = "-100vw";
+      document.querySelector("#container").style.marginLeft = 0;
+      document.querySelector("#footer p").style.paddingLeft = 0;
+    }
+    isHidden = !isHidden;    
+  })
+
+</script>
+<script>
+  
+
+</script>
+</body>
+</html>
